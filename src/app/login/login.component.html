@@ -1,5 +1,6 @@
 <mat-card>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <img src="assets/img/tecnologico-de-monterrey-black.png">
   <form (submit)="onLogin(loginForm)" #loginForm= "ngForm" *ngIf="!isLoading"><!--#postForm is local reference to this form-->
       <mat-form-field>
           <input
@@ -10,7 +11,7 @@
             required
             email
             #emailInput = "ngModel"
-            placeholder="E-mail"
+            placeholder="Correo"
           >
           <mat-error *ngIf="emailInput.invalid">Por favor ingresa un email válido.</mat-error>
       </mat-form-field>
@@ -23,13 +24,13 @@
           rows="6"
           #passwordInput="ngModel"
           required
-          placeholder="Password"
+          placeholder="Contraseña"
         >
         <mat-error *ngIf="passwordInput.invalid">Por favor ingresa una contraseña válida.</mat-error>
       </mat-form-field>
       <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="enter">Ingresar</mat-radio-button>
-        <mat-radio-button value="register">Registrar</mat-radio-button>
+        <mat-radio-button value="estudiante">Estudiante</mat-radio-button>
+        <mat-radio-button value="administrador">Administrador</mat-radio-button>
       </mat-radio-group>
       <button id="enter"
         mat-raised-button
