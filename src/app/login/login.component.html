@@ -1,1 +1,46 @@
-<p>login works!</p>
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form (submit)="onLogin(loginForm)" #loginForm= "ngForm" *ngIf="!isLoading"><!--#postForm is local reference to this form-->
+      <mat-form-field>
+          <input
+            matInput
+            type="email"
+            name = "email"
+            ngModel
+            required
+            email
+            #emailInput = "ngModel"
+            placeholder="E-mail"
+          >
+          <mat-error *ngIf="emailInput.invalid">Por favor ingresa un email válido.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          type = "password"
+          name= "password"
+          ngModel
+          matInput
+          rows="6"
+          #passwordInput="ngModel"
+          required
+          placeholder="Password"
+        >
+        <mat-error *ngIf="passwordInput.invalid">Por favor ingresa una contraseña válida.</mat-error>
+      </mat-form-field>
+      <button id="enter"
+        mat-raised-button
+        color="primary"
+        type="submit"
+        *ngIf="!isLoading"
+      >Ingresar</button>
+      <button routerLink='/signup' routerLinkActive="router-link-active"
+        id="register"
+        mat-raised-button
+        color="primary"
+        *ngIf="!isLoading"
+      >Registrarse</button>
+      <div>
+          <a routerLink='/forgot' routerLinkActive="router-link-active" >Olvidé mi contraseña</a>
+      </div>
+  </form>
+</mat-card>
