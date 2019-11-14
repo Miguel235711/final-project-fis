@@ -6,7 +6,7 @@
       </li>
       <li>
           <!--><a mat-button routerLink ="/Practices" routerLinkActive="mat-accent">Prácticas</a><!-->
-            <button mat-button routerLink="/Practices" routerLinkActive="mat-accent">[matMenuTriggerFor]="menu">Inventario</button>
+            <button mat-button routerLink="/Practices" routerLinkActive="mat-accent" [matMenuTriggerFor]="menu">Inventario</button>
             <mat-menu #menu="matMenu">
               <button mat-menu-item>Buscar</button>
               <button mat-menu-item>Consultar</button>
