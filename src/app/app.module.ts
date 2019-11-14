@@ -11,7 +11,8 @@ import {
   MatExpansionModule,
   MatProgressSpinnerModule,
   MatPaginatorModule,
-  MatDialogModule
+  MatDialogModule,
+  MatRadioModule
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -55,7 +56,9 @@ import { CheckComponent } from './check/check.component';
     MatProgressSpinnerModule,
     MatPaginatorModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]
