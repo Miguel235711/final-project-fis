@@ -12,7 +12,8 @@ import {
   MatProgressSpinnerModule,
   MatPaginatorModule,
   MatDialogModule,
-  MatRadioModule
+  MatRadioModule,
+  MatMenuModule
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -54,7 +55,8 @@ import { MygroupsComponent } from './mygroups/mygroups.component';
     MatDialogModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatRadioModule
+    MatRadioModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
