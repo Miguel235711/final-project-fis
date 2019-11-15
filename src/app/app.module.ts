@@ -21,10 +21,10 @@ import {
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './auth/login/login.component';
 import { HeaderComponent } from './header/header.component';
-import { ForgotComponent } from './forgot/forgot.component';
-import { SignupComponent } from './signup/signup.component';
+import { ForgotComponent } from './auth/forgot/forgot.component';
+import { SignupComponent } from './auth/signup/signup.component';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { PracticesComponent } from './practices/practices.component';
 import { InventoryComponent } from './inventory/inventory.component';
