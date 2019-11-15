@@ -5,14 +5,15 @@
         <a mat-button routerLink ="/NewsFeed" routerLinkActive="mat-accent">Muro</a>
       </li>
       <li>
-            <button mat-button routerLink="/Practices" routerLinkActive="mat-accent" [matMenuTriggerFor]="menu">Inventario</button>
-            <mat-menu #menu="matMenu">
-              <button mat-menu-item>Buscar</button>
-              <button mat-menu-item>Consultar</button>
-            </mat-menu>
+            <button mat-button routerLink="/Practices" routerLinkActive="mat-accent" >Prácticas</button>
+
       </li>
       <li>
-          <a mat-button routerLink ="/Inventory" routerLinkActive="mat-accent">Inventario</a>
+          <a mat-button routerLink ="/Inventory" routerLinkActive="mat-accent" [matMenuTriggerFor]="menu">Inventario</a>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item routerLink="/Search">Buscar</button>
+            <button mat-menu-item routerLink="/Check">Consultar</button>
+          </mat-menu>
       </li>
       <li>
           <a mat-button routerLink ="/MyGroups" routerLinkActive="mat-accent">Mis Grupos</a>
