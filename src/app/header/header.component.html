@@ -5,8 +5,7 @@
         <a mat-button routerLink ="/NewsFeed" routerLinkActive="mat-accent">Muro</a>
       </li>
       <li>
-            <button mat-button routerLink="/Practices" routerLinkActive="mat-accent" >Prácticas</button>
-
+        <a mat-button routerLink="/Practices" routerLinkActive="mat-accent" >Prácticas</a>
       </li>
       <li>
           <a mat-button routerLink ="/Inventory" routerLinkActive="mat-accent" [matMenuTriggerFor]="menu">Inventario</a>
@@ -16,7 +15,23 @@
           </mat-menu>
       </li>
       <li>
-          <a mat-button routerLink ="/MyGroups" routerLinkActive="mat-accent">Mis Grupos</a>
+          <a id="logout" mat-button routerLink ="/MyGroups" routerLinkActive="mat-accent">Mis Grupos</a>
+      </li>
+      <li>
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Profesora Leticia
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-action-row>
+              <a mat-button routerLink ="/MyGroups" routerLinkActive="mat-accent">Logout</a>
+            </mat-action-row>
+            <mat-action-row>
+            </mat-action-row>
+          </mat-expansion-panel>
+        </mat-accordion>
       </li>
     </ul>
 </mat-toolbar>
