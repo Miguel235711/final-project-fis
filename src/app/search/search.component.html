@@ -1,33 +1,55 @@
 <img src="assets/img/tecnologico-de-monterrey-black.png">
-<div>
+<style>
+.contenedora{
+  text-align: center
+}
+  .contenedora div{border:0px solid black;
+  width:200px; height: 200px;
+  display: inline-block;
+  }
+</style>
+<div class="contenedora">
   <h1><br>Inventario de laboratorio de Química</h1>
+  <div>
+
 </div>
-<h4>Reactivos &emsp;</h4>
-<mat-form-field>
-  <mat-label>Buscar</mat-label>
-  <mat-select>
-    <mat-option *ngFor="let reactive of reactives" [value]="reactive">
-      {{reactive}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+<div>
+  <h4>Reactivos &emsp;</h4>
+  <mat-form-field>
+    <mat-label>Buscar</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let reactive of reactives" [value]="reactive">
+        {{reactive}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
 
-<h4>Materiales &emsp;</h4>
-<mat-form-field>
-  <mat-label>Buscar</mat-label>
-  <mat-select>
-    <mat-option *ngFor="let material of materials" [value]="material">
-      {{material}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+<div>
+  <h4>Materiales &emsp;</h4>
+  <mat-form-field>
+    <mat-label>Buscar</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let material of materials" [value]="material">
+        {{material}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
 
-<h4>Mobiliario</h4>
-<mat-form-field>
-  <mat-label>Buscar</mat-label>
-  <mat-select>
-    <mat-option *ngFor="let furniture of furnitures" [value]="furniture">
-      {{furniture}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+<div>
+  <h4>Mobiliario</h4>
+  <mat-form-field>
+    <mat-label>Buscar</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let furniture of furnitures" [value]="furniture">
+        {{furniture}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+
+
+
+
