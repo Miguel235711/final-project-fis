@@ -4,10 +4,19 @@ const jwt = require('jsonwebtoken');
 
 const router = express.Router();///router
 const User = require('../models/user');
+const Key = require('../models/key');
 
 router.post('/signup',(req,res,next)=>{
-  console.log(req.body);
-  return res.status(201).json({message:'signup request received'});
+  console.log(req.body.key);
+  Key.findOne({key:req.body.key})
+  .then(result=>{
+    if(!result)
+      res.status(401).json({message:'key not found'});
+    console.log('key found');
+  })
+  .catch(error=>{
+    res.status(500).json({message:'problem with key from database'});
+  });
   /*bcrypt.hash(req.body.password, 10)
     .then(hash =>{
       const user = new User({
@@ -48,6 +57,7 @@ router.post('/login',(req,res,next)=>{
     }).then(result=>{
       if(!result){
         ///unsuccessfull match
+        console.log('unsuccessfull match');
         return res.status(401).json({
           message: 'Auth failed'
         });
@@ -58,10 +68,11 @@ router.post('/login',(req,res,next)=>{
         {expiresIn:'1h'}
       );///create json token
       console.log(token);
+      ///some problems to display in front but token correctly sent
       res.status(200).json({
         token: token,
         expiresIn: 3600,
-        userId: fetchedUser._id
+        userId: fetchedUser._id,
       });
       ///extra userId for optimization purposes
     }).catch(err=>{

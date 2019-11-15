@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm } from '@angular/forms';
+import { AuthService } from '../auth-data.service';
 
 @Component({
   templateUrl: './login.component.html',
@@ -7,7 +8,7 @@ import {NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   isLoading = false;
-  constructor() { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
   }
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.isLoading = true;
-    // this.authService.login(form.value.email, form.value.password);
+    this.authService.login(form.value.email, form.value.password);
   }
 
 }
