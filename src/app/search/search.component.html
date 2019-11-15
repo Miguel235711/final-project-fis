@@ -1,1 +1,33 @@
-<p>search works!</p>
+<img src="assets/img/tecnologico-de-monterrey-black.png">
+<div>
+  <h1><br>Inventario de laboratorio de Química</h1>
+</div>
+<h4>Reactivos &emsp;</h4>
+<mat-form-field>
+  <mat-label>Buscar</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let reactive of reactives" [value]="reactive">
+      {{reactive}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<h4>Materiales &emsp;</h4>
+<mat-form-field>
+  <mat-label>Buscar</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let material of materials" [value]="material">
+      {{material}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<h4>Mobiliario</h4>
+<mat-form-field>
+  <mat-label>Buscar</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let furniture of furnitures" [value]="furniture">
+      {{furniture}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
