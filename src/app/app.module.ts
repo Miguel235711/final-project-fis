@@ -26,6 +26,8 @@ import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { PracticesComponent } from './practices/practices.component';
 import { InventoryComponent } from './inventory/inventory.component';
 import { MygroupsComponent } from './mygroups/mygroups.component';
+import { SearchComponent } from './search/search.component';
+import { CheckComponent } from './check/check.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { MygroupsComponent } from './mygroups/mygroups.component';
     NewsfeedComponent,
     PracticesComponent,
     InventoryComponent,
-    MygroupsComponent
+    MygroupsComponent,
+    SearchComponent,
+    CheckComponent
   ],
   imports: [
     BrowserModule,

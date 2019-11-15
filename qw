@@ -1,0 +1,94 @@
+[33mcommit c6e53487a9a1f24cc748db67281943a911f6fd06[m[33m ([m[1;36mHEAD -> [m[1;32mheaderPracticas[m[33m)[m
+Author: JesusGarciaHdez <a01423730@itesm.mx>
+Date:   Thu Nov 14 14:33:01 2019 -0600
+
+    HamburguerMenu
+
+[33mcommit b60c11724ed6ee0c7d01a1e6d2803be0c5d2c06e[m
+Merge: fba9001 07bc271
+Author: JesusGarciaHdez <a01423730@itesm.mx>
+Date:   Thu Nov 14 14:21:55 2019 -0600
+
+    Merge remote-tracking branch 'origin/master' into headerPracticas
+
+[33mcommit 07bc271251e307eca683e3440a2bf662de21d7fc[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: e0b68ef ce719f9
+Author: Miguel235711 <42991504+Miguel235711@users.noreply.github.com>
+Date:   Thu Nov 14 14:21:14 2019 -0600
+
+    Merge pull request #3 from Miguel235711/login
+    
+    Login
+
+[33mcommit ce719f9c1a40cbd1931608349516e4c1bb402471[m[33m ([m[1;31morigin/login[m[33m)[m
+Author: Miguel235711 <a01423629@itesm.mx>
+Date:   Thu Nov 14 14:18:19 2019 -0600
+
+    add menu module and comment
+
+[33mcommit 68bfe388c528be98ace532777601e92274800f15[m
+Author: Miguel235711 <a01423629@itesm.mx>
+Date:   Thu Nov 14 14:15:40 2019 -0600
+
+    add menu module
+
+[33mcommit fba900131d6ad8b27469b52edc7a01b702f4b6f6[m
+Merge: 9b48364 e0b68ef
+Author: JesusGarciaHdez <a01423730@itesm.mx>
+Date:   Thu Nov 14 14:11:46 2019 -0600
+
+    Merge remote-tracking branch 'origin/master' into headerPracticas
+
+[33mcommit 9b4836415ac2a4b34b3d626441d4b02c3e41c810[m
+Author: JesusGarciaHdez <a01423730@itesm.mx>
+Date:   Thu Nov 14 14:11:44 2019 -0600
+
+    adding hambuger menu
+
+[33mcommit e0b68efd82a5630b5d45823acb64e4ba71b680b9[m
+Merge: 756b2e0 d29153f
+Author: Miguel235711 <42991504+Miguel235711@users.noreply.github.com>
+Date:   Thu Nov 14 14:07:02 2019 -0600
+
+    Merge pull request #2 from Miguel235711/login
+    
+    adding radio group
+
+[33mcommit d29153f9545841749a886cf65a1e10971fec573b[m
+Author: Miguel235711 <a01423629@itesm.mx>
+Date:   Thu Nov 14 14:05:53 2019 -0600
+
+    adding radio group
+
+[33mcommit 756b2e039ec7907ded698b48a89efb216a4cc8f3[m[33m ([m[1;32mmaster[m[33m)[m
+Merge: 72415ea 78236a1
+Author: Miguel235711 <42991504+Miguel235711@users.noreply.github.com>
+Date:   Thu Nov 14 00:34:02 2019 -0600
+
+    Merge pull request #1 from Miguel235711/login
+    
+    Login
+
+[33mcommit 78236a1b5d7ef4006b1ff2a23f07869615beebd1[m
+Author: Miguel235711 <a01423629@itesm.mx>
+Date:   Thu Nov 14 00:31:52 2019 -0600
+
+    addingSomeSkeleton
+
+[33mcommit 7fe9f23103477e0ab5082769eb640e986df3e867[m
+Author: Miguel235711 <a01423629@itesm.mx>
+Date:   Wed Nov 13 22:58:16 2019 -0600
+
+    loginChaningTest
+
+[33mcommit 72415ea9e85607cbc8a9d295d77a972f9183eb97[m
+Author: Miguel235711 <a01423629@itesm.mx>
+Date:   Wed Nov 13 22:39:23 2019 -0600
+
+    adding login
+
+[33mcommit 4dc0f98fc1dd42349fd30bb1e7272228d50b0ec9[m
+Author: Miguel Ángel Muñoz Vázquez <mig1000123@gmail.com>
+Date:   Wed Nov 13 22:02:03 2019 -0600
+
+    initial commit
