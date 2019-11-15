@@ -1,1 +1,28 @@
-<p>forgot works!</p>
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <img src="assets/img/tecnologico-de-monterrey-black.png">
+  <h1>Resetear Contraseña</h1>
+  <form (submit)="onForgot(forgotForm)" #forgotForm= "ngForm" *ngIf="!isLoading"><!--#postForm is local reference to this form-->
+      <div>
+        <h4>Correo</h4>
+        <mat-form-field>
+            <input
+              matInput
+              type="email"
+              name = "email"
+              ngModel
+              required
+              email
+              #emailInput = "ngModel"
+            >
+            <mat-error *ngIf="emailInput.invalid">Por favor ingresa un email válido.</mat-error>
+        </mat-form-field>
+      </div>
+      <button id="enter"
+        mat-raised-button
+        color="primary"
+        type="submit"
+        *ngIf="!isLoading"
+      >Resetear</button>
+  </form>
+</mat-card>
