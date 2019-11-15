@@ -1,19 +1,18 @@
 <mat-card>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <img src="assets/img/tecnologico-de-monterrey-black.png">
   <form (submit)="onSignup(loginForm)" #loginForm= "ngForm" *ngIf="!isLoading"><!--#postForm is local reference to this form-->
     <div>
         <h4>Nombre</h4>
         <mat-form-field>
           <input
               matInput
-              type="last"
-              name = "last"
+              name = "name"
               ngModel
               required
-              email
-              #lastInput = "ngModel"
+              #nameInput = "ngModel"
             >
-            <mat-error *ngIf="lastInput.invalid">Por favor ingresa un apellido válido.</mat-error>
+            <mat-error *ngIf="nameInput.invalid">Por favor ingresa un nombre válido.</mat-error>
         </mat-form-field>
     </div>
     <div>
@@ -21,11 +20,9 @@
       <mat-form-field>
         <input
             matInput
-            type="last"
             name = "last"
             ngModel
             required
-            email
             #lastInput = "ngModel"
           >
           <mat-error *ngIf="lastInput.invalid">Por favor ingresa un apellido válido.</mat-error>
@@ -47,13 +44,14 @@
         <mat-error *ngIf="emailInput.invalid">Por favor ingresa un email válido.</mat-error>
       </mat-form-field>
     </div>
-    <h4>Contraseña</h4>
+    <div>
+      <h4>Contraseña</h4>
       <mat-form-field>
         <input
-          type = "password"
           name= "password"
           ngModel
           matInput
+          type="password"
           rows="6"
           #passwordInput="ngModel"
           required
@@ -61,13 +59,14 @@
         >
         <mat-error *ngIf="passwordInput.invalid">Por favor ingresa una contraseña válida.</mat-error>
       </mat-form-field>
+    </div>
       <div>
         <h4>Confirmar Contraseña</h4>
         <mat-form-field>
           <input
-            type = "password"
-            name= "password"
+            name= "confirmationPassword"
             ngModel
+            type="password"
             matInput
             rows="6"
             #passwordConfirmationInput="ngModel"
@@ -77,19 +76,46 @@
         </mat-form-field>
       </div>
       <div>
+        <h4>Género</h4>
+        <mat-form-field>
+          <mat-label>Seleccionar</mat-label>
+          <mat-select name = "genre" ngModel #genreInput="ngModel" required>
+            <mat-option *ngFor="let genre of genres" [value]="genre">
+            {{genre}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
         <p>Soy:</p>
-        <mat-radio-group aria-label="Select an option">
+        <mat-radio-group name="iam" ngModel #studentAdminInput="ngModel" required aria-label="Soy" >
           <mat-radio-button value="estudiante">Estudiante</mat-radio-button>
           <mat-radio-button value="administrador">Administrador</mat-radio-button>
         </mat-radio-group>
       </div>
+      <div>
+        <h4>Llave Personal</h4>
+          <mat-form-field>
+            <input
+              type = "password"
+              name= "key"
+              ngModel
+              matInput
+              rows="6"
+              #keyInput="ngModel"
+              required
+              placeholder="Ej. 1352-3135-1390-6781"
+            >
+            <mat-error *ngIf="keyInput.invalid">Por favor ingresa una llave válida.</mat-error>
+          </mat-form-field>
+        </div>
       <button
         id="register"
         type="submit"
         mat-raised-button
         color="primary"
         *ngIf="!isLoading"
-      >Registrarse</button>
+      >Registrar</button>
   </form>
 </mat-card>
 <!--misa is commenting-->

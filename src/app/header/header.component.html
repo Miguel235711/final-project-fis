@@ -18,20 +18,22 @@
           <a id="logout" mat-button routerLink ="/MyGroups" routerLinkActive="mat-accent">Mis Grupos</a>
       </li>
       <li>
-        <mat-accordion>
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Profesora Leticia
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <mat-action-row>
-              <a mat-button routerLink ="/MyGroups" routerLinkActive="mat-accent">Logout</a>
-            </mat-action-row>
-            <mat-action-row>
-            </mat-action-row>
-          </mat-expansion-panel>
-        </mat-accordion>
+        <div id="logMenu">
+          <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Profesora Leticia
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-action-row>
+                <a mat-button routerLink ="/" routerLinkActive="mat-accent">Logout</a>
+              </mat-action-row>
+              <mat-action-row>
+              </mat-action-row>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
       </li>
     </ul>
 </mat-toolbar>
