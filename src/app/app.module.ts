@@ -13,7 +13,9 @@ import {
   MatPaginatorModule,
   MatDialogModule,
   MatRadioModule,
-  MatMenuModule
+  MatMenuModule,
+  MatSelectModule,
+  MatOptionModule
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -60,7 +62,9 @@ import { CheckComponent } from './check/check.component';
     HttpClientModule,
     ReactiveFormsModule,
     MatRadioModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule,
+    MatOptionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
