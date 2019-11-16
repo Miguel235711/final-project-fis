@@ -31,6 +31,7 @@ export class AuthService {
     return this.http.post('http://localhost:3000/api/user/signup', authData).subscribe(() => {
       this.router.navigate(['/NewsFeed']);
     }, error => {
+      console.log(error);
       this.authStatusListener.next(false);
     }); /// return observable
   }
