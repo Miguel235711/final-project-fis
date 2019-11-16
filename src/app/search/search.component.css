@@ -4,3 +4,9 @@ div{
 #SearchMaterial{
   text-align:left;
 }
+.no-hover-effect.mat-button.mat-primary .mat-button-focus-overlay,
+.no-hover-effect.mat-button.mat-accent .mat-button-focus-overlay,
+.no-hover-effect.mat-button.mat-warn .mat-button-focus-overlay
+{
+  background-color: transparent;
+}

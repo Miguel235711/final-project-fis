@@ -16,7 +16,8 @@ import {
   MatMenuModule,
   MatSelectModule,
   MatOptionModule,
-  MatTableModule
+  MatTableModule,
+  MatIconModule
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -66,7 +67,8 @@ import { CheckComponent } from './check/check.component';
     MatMenuModule,
     MatSelectModule,
     MatOptionModule,
-    MatTableModule
+    MatTableModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
