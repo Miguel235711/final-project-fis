@@ -11,5 +11,8 @@ export class InventoryComponent implements OnInit {
 
   ngOnInit() {
   }
+  openBottomSheet() {
+    console.log('openBottomSheet');
+  }
 
 }
