@@ -45,6 +45,13 @@
         *ngIf="!isLoading"
       >Registrarse</button>
       <div>
+        <p>Soy:</p>
+        <mat-radio-group name="iam" ngModel #studentAdminInput="ngModel" required aria-label="Soy" >
+          <mat-radio-button value="estudiante">Estudiante</mat-radio-button>
+          <mat-radio-button value="administrador">Administrador</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div>
           <a routerLink='/forgot' routerLinkActive="router-link-active" >Olvidé mi contraseña</a>
       </div>
   </form>

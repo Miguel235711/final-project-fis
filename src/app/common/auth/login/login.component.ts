@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm } from '@angular/forms';
 import { AuthService } from '../auth-data.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   templateUrl: './login.component.html',
@@ -17,7 +18,6 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.isLoading = true;
-    this.authService.login(form.value.email, form.value.password);
+    this.authService.login(form.value.email, form.value.password, form.value.iam === 'estudiante' ? false : true);
   }
-
 }

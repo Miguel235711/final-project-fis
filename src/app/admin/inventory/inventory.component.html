@@ -1,0 +1,10 @@
+<img src="assets/img/tecnologico-de-monterrey-black.png">
+<div id="center">
+  <h1><br>Subir Excel:</h1>
+</div>
+
+<div id="center">
+  <button  mat-raised-button (click)="filePicker.click()">Open file</button>
+  <input hidden type="file" #filePicker (change)="onExcelPicked($event)">
+</div>
+

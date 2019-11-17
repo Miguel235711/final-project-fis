@@ -13,6 +13,7 @@ export class AuthService {
   private userId: string;
   /// to know if the user is authenticated or not
   private authStatusListener = new Subject<boolean>();
+  private userInfoListener = new Subject<string>();
   constructor(private http: HttpClient, private router: Router) {}
   getToken() {
     return this.token;
@@ -22,6 +23,9 @@ export class AuthService {
   }
   getUserId() {
     return this.userId;
+  }
+  getUserInfoListener() {
+    return this.userInfoListener.asObservable();
   }
   getAuthStatusListener() {
     /// get as observable
@@ -35,9 +39,9 @@ export class AuthService {
       this.authStatusListener.next(false);
     }); /// return observable
   }
-  login(email: string, password: string) {
-    const authData: AuthLogData = {email, password};
-    this.http.post<{token: string, expiresIn: number, userId: string}>('http://localhost:3000/api/user/login', authData).
+  login(email: string, password: string, isAdmin: boolean) {
+    const authData: AuthLogData = {email, password, isAdmin};
+    this.http.post<{token: string, expiresIn: number, userId: string, userName: string}>('http://localhost:3000/api/user/login', authData).
       subscribe(response => {
         const token = response.token;
         this.token = token;
@@ -52,7 +56,10 @@ export class AuthService {
           const now = new Date();
           const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
           this.saveAuthData(token, expirationDate, this.userId);
-          this.router.navigate(['/']);
+          console.log('redirect to /NewsFeed ');
+          /// emmit event
+          this.userInfoListener.next(response.userName);
+          this.router.navigate(['/NewsFeed']);
         }
         console.log('login subscription successfull');
       }, error => {
