@@ -22,18 +22,18 @@ import {
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './auth/login/login.component';
-import { HeaderComponent } from './header/header.component';
-import { ForgotComponent } from './auth/forgot/forgot.component';
-import { SignupComponent } from './auth/signup/signup.component';
-import { NewsfeedComponent } from './newsfeed/newsfeed.component';
-import { PracticesComponent } from './practices/practices.component';
-import { InventoryComponent } from './inventory/inventory.component';
-import { MygroupsComponent } from './mygroups/mygroups.component';
-import { SearchComponent } from './search/search.component';
-import { CheckComponent } from './check/check.component';
+import { LoginComponent } from './common/auth/login/login.component';
+import { HeaderComponent } from './common/header/header.component';
+import { ForgotComponent } from './common/auth/forgot/forgot.component';
+import { SignupComponent } from './common/auth/signup/signup.component';
+import { NewsfeedComponent } from './common/newsfeed/newsfeed.component';
+import { PracticesComponent } from './admin/practices/practices.component';
+import { InventoryComponent } from './admin/inventory/inventory.component';
+import { MygroupsComponent } from './admin/mygroups/mygroups.component';
+import { SearchComponent } from './admin/search/search.component';
+import { CheckComponent } from './admin/check/check.component';
 import { ErrorInterceptor } from './error-interceptor';
-import { ErrorComponent } from './error/error.component';
+import { ErrorComponent } from './common/error/error.component';
 
 @NgModule({
   declarations: [
