@@ -2,6 +2,7 @@
   font-size: 50 px;
   text-align: center;
 }
+<<<<<<< HEAD
 
 .colored {
   background-color: #4CAF50; /* Green */
@@ -11,4 +12,9 @@
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+=======
+img {
+  width: 100%;
+  height: auto;
+>>>>>>> origin
 }

@@ -16,7 +16,8 @@ import {
   MatMenuModule,
   MatSelectModule,
   MatOptionModule,
-  MatTableModule
+  MatTableModule,
+  MatIconModule
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -31,6 +32,8 @@ import { InventoryComponent } from './inventory/inventory.component';
 import { MygroupsComponent } from './mygroups/mygroups.component';
 import { SearchComponent } from './search/search.component';
 import { CheckComponent } from './check/check.component';
+import { ErrorInterceptor } from './error-interceptor';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,8 @@ import { CheckComponent } from './check/check.component';
     InventoryComponent,
     MygroupsComponent,
     SearchComponent,
-    CheckComponent
+    CheckComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -66,9 +70,11 @@ import { CheckComponent } from './check/check.component';
     MatMenuModule,
     MatSelectModule,
     MatOptionModule,
-    MatTableModule
+    MatTableModule,
+    MatIconModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],
+  bootstrap: [AppComponent],
+  entryComponents: [ErrorComponent]
 })
 export class AppModule { }
