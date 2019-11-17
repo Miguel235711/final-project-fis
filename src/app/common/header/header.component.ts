@@ -10,13 +10,15 @@ import {Subscription } from 'rxjs';
 export class HeaderComponent implements OnInit {
   userIsAuthenticated = false;
   userName: string;
+  userType: string;
   constructor(public authService: AuthService) { }
   private userInfoSubs: Subscription;
   ngOnInit() {
     console.log('ngOnInit of header');
-    this.userInfoSubs = this.authService.getUserInfoListener().subscribe(userName => {
+    this.userInfoSubs = this.authService.getUserInfoListener().subscribe((userInfo: {userName: string, userType: string}) => {
       console.log('update to userId in header');
-      this.userName = userName;
+      this.userName = userInfo.userName;
+      this.userType = userInfo.userType;
     });
   }
   onLogout() {}

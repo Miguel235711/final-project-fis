@@ -13,7 +13,7 @@ export class AuthService {
   private userId: string;
   /// to know if the user is authenticated or not
   private authStatusListener = new Subject<boolean>();
-  private userInfoListener = new Subject<string>();
+  private userInfoListener = new Subject<{userName: string, userType: string} >();
   constructor(private http: HttpClient, private router: Router) {}
   getToken() {
     return this.token;
@@ -41,7 +41,12 @@ export class AuthService {
   }
   login(email: string, password: string, isAdmin: boolean) {
     const authData: AuthLogData = {email, password, isAdmin};
-    this.http.post<{token: string, expiresIn: number, userId: string, userName: string}>('http://localhost:3000/api/user/login', authData).
+    this.http.post<{
+      token: string,
+      expiresIn: number,
+      userId: string,
+      userName: string,
+      userType: string}>('http://localhost:3000/api/user/login', authData).
       subscribe(response => {
         const token = response.token;
         this.token = token;
@@ -58,7 +63,7 @@ export class AuthService {
           this.saveAuthData(token, expirationDate, this.userId);
           console.log('redirect to /NewsFeed ');
           /// emmit event
-          this.userInfoListener.next(response.userName);
+          this.userInfoListener.next({userName: response.userName, userType: response.userType});
           this.router.navigate(['/NewsFeed']);
         }
         console.log('login subscription successfull');

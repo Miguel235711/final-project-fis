@@ -110,7 +110,8 @@ function processUser(fetchedUser,req,res){
         token: token,
         expiresIn: 3600,
         userId: fetchedUser._id,
-        userName: fetchedUser.name
+        userName: fetchedUser.name,
+        userType: fetchedUser.isAdmin?'Admin':'Student'
       });
       ///extra userId for optimization purposes
     })
