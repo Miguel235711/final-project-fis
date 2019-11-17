@@ -11,6 +11,8 @@ export class AuthService {
   private token: string;
   private tokenTime: any;
   private userId: string;
+  private userName: string;
+  private userType;
   /// to know if the user is authenticated or not
   private authStatusListener = new Subject<boolean>();
   private userInfoListener = new Subject<{userName: string, userType: string} >();
@@ -63,6 +65,8 @@ export class AuthService {
           this.saveAuthData(token, expirationDate, this.userId);
           console.log('redirect to /NewsFeed ');
           /// emmit event
+          this.userName = response.userName;
+          this.userType = response.userType;
           this.userInfoListener.next({userName: response.userName, userType: response.userType});
           this.router.navigate(['/NewsFeed']);
         }
@@ -100,7 +104,7 @@ export class AuthService {
     this.userId = null;
     this.isAuthenticated = false;
     this.authStatusListener.next(false);
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
     this.clearAuthData();
     clearTimeout(this.tokenTime);
   }
@@ -127,5 +131,11 @@ export class AuthService {
       expirationDate: new Date(expirationDate),
       userId
     };
+  }
+  getUserName() {
+    return this.userName;
+  }
+  getUserType() {
+    return this.userType;
   }
 }

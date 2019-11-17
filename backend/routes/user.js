@@ -96,7 +96,7 @@ function processUser(fetchedUser,req,res){
       ///unsuccessfull match
       console.log('unsuccessfull match');
         return res.status(401).json({
-          message: 'Auth failed'
+          message: 'Contraseña no válida'
         });
       }
       const token = jwt.sign(
@@ -111,7 +111,7 @@ function processUser(fetchedUser,req,res){
         expiresIn: 3600,
         userId: fetchedUser._id,
         userName: fetchedUser.name,
-        userType: fetchedUser.isAdmin?'Admin':'Student'
+        userType: req.body.isAdmin?'Admin':'Estudiante'
       });
       ///extra userId for optimization purposes
     })
@@ -125,13 +125,14 @@ function processUser(fetchedUser,req,res){
 
 router.post('/login',(req,res,next)=>{
   console.log(req.body.email);
+  console.log(req.body.isAdmin);
   if(!req.body.isAdmin){
     console.log('going to look student');
     Student.findOne({email: req.body.email})
       .then(student =>{
         if(!student){
           ///no student found
-          return res.status(401).json({message:'Student not found'});
+          return res.status(401).json({message:'Correo de Estudiante no encontrado'});
         }
         ///student found, process it
         console.log('going to process student');
@@ -142,7 +143,7 @@ router.post('/login',(req,res,next)=>{
       .then(admin=>{
         if(!admin){
           ///no admin found
-          return res.status(401).json({message:'Admin not found'});
+          return res.status(401).json({message:'Correo de Administrador no encontrado'});
         }else{
           ///admin found
           processUser(admin,req,res);
