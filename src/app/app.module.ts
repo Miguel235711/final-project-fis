@@ -35,6 +35,7 @@ import { CheckComponent } from './admin/inventory/check/check.component';
 import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './common/error/error.component';
 import { SuccessInterceptor } from './success-interceptor';
+import { CreateComponent } from './admin/inventory/create/create.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { SuccessInterceptor } from './success-interceptor';
     MygroupsComponent,
     SearchComponent,
     CheckComponent,
-    ErrorComponent
+    ErrorComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,
@@ -79,6 +81,6 @@ import { SuccessInterceptor } from './success-interceptor';
     {provide: HTTP_INTERCEPTORS, useClass: SuccessInterceptor, multi: true}
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ErrorComponent]
+  entryComponents: [ErrorComponent, CreateComponent]
 })
 export class AppModule { }
