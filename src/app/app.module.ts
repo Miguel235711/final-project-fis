@@ -34,6 +34,7 @@ import { SearchComponent } from './admin/search/search.component';
 import { CheckComponent } from './admin/check/check.component';
 import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './common/error/error.component';
+import { SuccessInterceptor } from './success-interceptor';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,10 @@ import { ErrorComponent } from './common/error/error.component';
     MatTableModule,
     MatIconModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: SuccessInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent],
   entryComponents: [ErrorComponent]
 })
