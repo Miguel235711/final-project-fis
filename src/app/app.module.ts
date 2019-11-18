@@ -23,15 +23,15 @@ import {
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './common/auth/login/login.component';
-import { HeaderComponent } from './admin/header/header.component';
+import { HeaderComponent } from './common/header/header.component';
 import { ForgotComponent } from './common/auth/forgot/forgot.component';
 import { SignupComponent } from './common/auth/signup/signup.component';
 import { NewsfeedComponent } from './common/newsfeed/newsfeed.component';
 import { PracticesComponent } from './admin/practices/practices.component';
-import { InventoryComponent } from './admin/inventory/inventory.component';
+import { ExcelComponent } from './admin/inventory/excel/excel.component';
 import { MygroupsComponent } from './admin/mygroups/mygroups.component';
-import { SearchComponent } from './admin/search/search.component';
-import { CheckComponent } from './admin/check/check.component';
+import { SearchComponent } from './admin/inventory/search/search.component';
+import { CheckComponent } from './admin/inventory/check/check.component';
 import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './common/error/error.component';
 import { SuccessInterceptor } from './success-interceptor';
@@ -45,7 +45,7 @@ import { SuccessInterceptor } from './success-interceptor';
     SignupComponent,
     NewsfeedComponent,
     PracticesComponent,
-    InventoryComponent,
+    ExcelComponent,
     MygroupsComponent,
     SearchComponent,
     CheckComponent,
