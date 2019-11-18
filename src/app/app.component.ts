@@ -14,10 +14,13 @@ export class AppComponent implements OnInit , OnDestroy {
   authenticated = false;
   title = 'final-project-fis';
   ngOnInit() {
+    this.authService.autoAuthUser();
+    this.authenticated = this.authService.getIsAuth();
     this.userAuthSubs = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
       if (!isAuthenticated) {
         this.router.navigate(['/']);
       }
+      console.log('app component', isAuthenticated);
       this.authenticated = isAuthenticated;
     });
   }
