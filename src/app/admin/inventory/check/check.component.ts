@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { TableElement } from '../tableElement-data.model';
+import {CreateComponent } from '../create/create.component';
+import { MatDialog, MatTableModule } from '@angular/material';
 
 @Component({
   selector: 'app-check',
@@ -9,24 +12,22 @@ export class CheckComponent implements OnInit {
   displayedColumns: string[] = ['Unidades', 'Cantidad', 'Nombre', 'Etiqueta' , 'NumBodega', 'NumLab', 'Observaciones', 'PrepaProfe',
   'Editar'];
   dataSource = ELEMENT_DATA;
-  constructor() { }
+  constructor(private dialog: MatDialog) {}
   ngOnInit() {
   }
-
-}
-export interface PeriodicElement {
-  Unidades: string;
-  Cantidad: string;
-  Nombre: string;
-  Etiqueta: string;
-  NumBodega: number;
-  NumLab: number;
-  Observaciones: string;
-  PrepaProfe: string;
-  Editar: boolean;
+  /*onEdit(eventElement) {
+    console.log('onEdit method', eventElement);
+  }*/
+  onCreate(clickedElement) {
+    const name = clickedElement._elementRef.nativeElement.name;
+    if (name === 'addButton') {
+      console.log('addButton identified');
+      this.dialog.open(CreateComponent, { data: { title: 'Alta de ITEM' }} );
+    }
+  }
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
+const ELEMENT_DATA: TableElement[] = [
   {Unidades: '3 frascos', Cantidad: '3 L', Nombre: 'Alcohol', Etiqueta: 'yellow' ,
   NumBodega: 10, NumLab: 5 , Observaciones: '', PrepaProfe: 'Prepa' , Editar: true},
   {Unidades: '2 frascos', Cantidad: '2 L', Nombre: 'Butidieno', Etiqueta: 'yellow',
