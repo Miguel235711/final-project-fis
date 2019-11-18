@@ -54,7 +54,6 @@ function saveAdmin(body,res,hash){
     });
   });
 }
-
 router.post('/signup',(req,res,next)=>{
   console.log(req.body.key);
   Key.find({})
@@ -72,6 +71,8 @@ router.post('/signup',(req,res,next)=>{
     if(!result){
       return res.status(401).json({message:'key not found'});
     }
+    //sendMail();
+    ///test if mail exists
     ///erase key
     Key.deleteOne({key:req.body.key}).then(result=>{
       console.log('after deleting key');
