@@ -38,6 +38,7 @@ import { ErrorComponent } from './common/error/error.component';
 import { SuccessInterceptor } from './success-interceptor';
 import { CreateComponent } from './admin/inventory/create/create.component';
 import { TableComponent } from './admin/inventory/check/table/table.component';
+import { AuthInterceptor } from './common/auth/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import { TableComponent } from './admin/inventory/check/table/table.component';
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: SuccessInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: SuccessInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent],
   entryComponents: [ErrorComponent, CreateComponent]
