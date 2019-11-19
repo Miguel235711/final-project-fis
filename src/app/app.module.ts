@@ -37,6 +37,8 @@ import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './common/error/error.component';
 import { SuccessInterceptor } from './success-interceptor';
 import { CreateComponent } from './admin/inventory/create/create.component';
+import { TableComponent } from './admin/inventory/check/table/table.component';
+import { create } from 'domain';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,8 @@ import { CreateComponent } from './admin/inventory/create/create.component';
     SearchComponent,
     CheckComponent,
     ErrorComponent,
-    CreateComponent
+    CreateComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
