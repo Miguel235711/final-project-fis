@@ -18,12 +18,14 @@ img {
   width: 85%;
   height: auto;
 }
+.container {
+  display: flex;
+}
 .tam {
-  position: fixed;
   max-width: 600px;
   max-height: 600px;
   margin-left: 300px;
-  margin-right: auto;
+  margin-right: 0;
 }
 div , #enter , #register{
   margin-top: 30px;

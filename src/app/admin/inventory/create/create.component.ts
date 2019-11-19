@@ -30,8 +30,9 @@ export class CreateComponent implements OnInit {
     PrepaProfe: '',
     Editar: true
   };
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {title: string, type: string}) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {title: string, type: string, etiqueta: string}) {}
   ngOnInit() {
+    this.createForm.Etiqueta = this.data.etiqueta;
   }
   onSave() {
     if ( this.data.type === 'create') {
