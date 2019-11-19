@@ -17,7 +17,8 @@ import {
   MatSelectModule,
   MatOptionModule,
   MatTableModule,
-  MatIconModule
+  MatIconModule,
+  MatGridListModule
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -74,7 +75,8 @@ import { CreateComponent } from './admin/inventory/create/create.component';
     MatSelectModule,
     MatOptionModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatGridListModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
