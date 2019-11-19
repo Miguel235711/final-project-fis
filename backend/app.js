@@ -4,6 +4,7 @@ const express = require('express'); ///import express package
 const bodyParser=require('body-parser');///import body-parser
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/user');
+const itemRoutes = require('./routes/item');
 
 ///INSTANTIATIONS
 
@@ -37,5 +38,6 @@ app.use((req,res,next)=>{////to disable Cross-Origin Resource Sharing (CORS) fea
 
 ///forward especific requests
 app.use('/api/user',userRoutes);
+app.use('/api/item',itemRoutes);
 
 module.exports = app;
