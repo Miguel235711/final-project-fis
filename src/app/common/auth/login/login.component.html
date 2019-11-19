@@ -1,58 +1,67 @@
-<mat-card class=tam>
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <img src="assets/img/tecnologico-de-monterrey-black.png">
-  <form (submit)="onLogin(loginForm)" #loginForm= "ngForm" *ngIf="!isLoading"><!--#postForm is local reference to this form-->
-      <div>
-        <h4>Correo</h4>
-        <mat-form-field>
-            <input
-              matInput
-              type="email"
-              name = "email"
-              ngModel
-              required
-              email
-              #emailInput = "ngModel"
-            >
-            <mat-error *ngIf="emailInput.invalid">Por favor ingresa un email válido.</mat-error>
-        </mat-form-field>
-      </div>
-      <div>
-        <h4>Contraseña</h4>
-        <mat-form-field>
-          <input
-            type = "password"
-            name= "password"
-            ngModel
-            matInput
-            rows="6"
-            #passwordInput="ngModel"
-            required
-          >
-          <mat-error *ngIf="passwordInput.invalid">Por favor ingresa una contraseña válida.</mat-error>
-        </mat-form-field>
-      </div>
-      <div>
-        <p>Soy:</p>
-        <mat-radio-group name="iam" ngModel #studentAdminInput="ngModel" required aria-label="Soy" >
-          <mat-radio-button value="estudiante">Estudiante</mat-radio-button>
-          <mat-radio-button value="administrador">Administrador</mat-radio-button>
-        </mat-radio-group>
-      </div>
-      <button id="enter"
-        mat-raised-button
-        color="primary"
-        type="submit"
-        *ngIf="!isLoading"
-      >Ingresar</button>
-      <button routerLink='/signup' routerLinkActive="router-link-active"
-        id="register"
-        mat-raised-button
-        color="primary"
-        *ngIf="!isLoading"
-      >Registrarse</button>
-      <div>
-          <a routerLink='/forgot' routerLinkActive="router-link-active" >Olvidé mi contraseña</a>
-      </div>
-  </form>
-</mat-card>
+<body>
+  <mat-grid-list cols="2">
+    <mat-grid-tile>
+    <img class=campo src="https://fs.itesm.mx/adfs/portal/illustration/illustration.jpg?id=85F11BA2A91AF5792D702D25E80622B11360B9495B7C67A7E11509F98CBAB498&rp=77a91927-6788-e911-a818-000d3a5de8c6">
+    </mat-grid-tile>
+    <mat-grid-tile >
+    <mat-card class=tam >
+      <mat-spinner *ngIf="isLoading"></mat-spinner>
+      <img src="assets/img/tecnologico-de-monterrey-black.png">
+      <form (submit)="onLogin(loginForm)" #loginForm= "ngForm" *ngIf="!isLoading"><!--#postForm is local reference to this form-->
+          <div>
+            <h4>Correo</h4>
+            <mat-form-field>
+                <input
+                  matInput
+                  type="email"
+                  name = "email"
+                  ngModel
+                  required
+                  email
+                  #emailInput = "ngModel"
+                >
+                <mat-error *ngIf="emailInput.invalid">Por favor ingresa un email válido.</mat-error>
+            </mat-form-field>
+          </div>
+          <div>
+            <h4>Contraseña</h4>
+            <mat-form-field>
+              <input
+                type = "password"
+                name= "password"
+                ngModel
+                matInput
+                rows="6"
+                #passwordInput="ngModel"
+                required
+              >
+              <mat-error *ngIf="passwordInput.invalid">Por favor ingresa una contraseña válida.</mat-error>
+            </mat-form-field>
+          </div>
+          <div>
+            <p>Soy:</p>
+            <mat-radio-group name="iam" ngModel #studentAdminInput="ngModel" required aria-label="Soy" >
+              <mat-radio-button value="estudiante">Estudiante</mat-radio-button>
+              <mat-radio-button value="administrador">Administrador</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <button id="enter"
+            mat-raised-button
+            color="primary"
+            type="submit"
+            *ngIf="!isLoading"
+          >Ingresar</button>
+          <button routerLink='/signup' routerLinkActive="router-link-active"
+            id="register"
+            mat-raised-button
+            color="primary"
+            *ngIf="!isLoading"
+          >Registrarse</button>
+          <div>
+              <a routerLink='/forgot' routerLinkActive="router-link-active" >Olvidé mi contraseña</a>
+          </div>
+      </form>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+</body>
