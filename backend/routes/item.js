@@ -1,11 +1,12 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const checkAuth = require('../middleware/check-auth');
 
 const router = express.Router();///router
 const Item = require('../models/inventory/item');
 
-router.post('/addItem',(req,res,next)=>{
+router.post('/addItem',checkAuth,(req,res,next)=>{
   //return res.status(200).json('addItemPost');
   console.log(req.body);
   const item = new Item({
@@ -17,7 +18,9 @@ router.post('/addItem',(req,res,next)=>{
     NumLab: req.body.NumLab,
     Observaciones: req.body.Observaciones,
     PrepaProfe: req.body.PrepaProfe,
-    Editar: req.body.Editar
+    Editar: req.body.Editar,
+    Borrar: req.body.Borrar,
+    Activo:true
   });
   console.log(item);
   item.save()
@@ -29,6 +32,22 @@ router.post('/addItem',(req,res,next)=>{
   });
   console.log('item', item);
   //return res.status(201).json('item insertado correctamente');
+});
+router.get('',(req,res,next)=>{
+  ///get every single item
+  Item.find()
+    .then(fetchedItems=>{
+      console.log(fetchedItems);
+      res.status(200).json({
+        message: 'Items fetched successfully',
+        items: fetchedItems
+      });
+    })
+    .catch(error=>{
+      res.status(500).json({
+        message:'Fetching Items failed'
+      });
+    });
 });
 
 module.exports = router;

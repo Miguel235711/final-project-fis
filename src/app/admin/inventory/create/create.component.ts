@@ -3,7 +3,6 @@ import { ColorElement } from '../color-data.model';
 import { TableElement } from '../tableElement-data.model';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import {ItemService } from '../item-data.service';
-
 @Component({
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css']
@@ -50,6 +49,7 @@ export class CreateComponent implements OnInit {
         }
       /// submit data
       this.itemService.createItem(this.createForm);
+      /// update front end
     } else if (this.data.type === 'edit') {
       console.log('edit onSave()');
     }

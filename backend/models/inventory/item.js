@@ -12,7 +12,9 @@ const itemSchema = mongoose.Schema({///Constructor
   NumLab: {type: Number, required:true},
   Observaciones: {type:String, required:true},
   PrepaProfe: {type:String, required:true, enum: ['Prepa','Profe']},
-  Editar: {type:Boolean, required:true}
+  Editar: {type:Boolean, required:true},
+  Borrar: {type:Boolean, required:true},
+  Activo: {type: Boolean, required:true}
 });///create schema
 
 itemSchema.plugin(uniqueValidator);///to validate unique
