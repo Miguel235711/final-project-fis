@@ -1,6 +1,7 @@
 import { Component, OnInit , Inject } from '@angular/core';
 import {MAT_DIALOG_DATA } from '@angular/material';
 import { ColorElement } from '../color-data.model';
+import { TableElement } from '../tableElement-data.model';
 
 @Component({
   templateUrl: './create.component.html',
@@ -18,13 +19,32 @@ export class CreateComponent implements OnInit {
     {value: 'orange', viewValue: 'orange'},
     {value: 'gray', viewValue: 'gray'}
   ];
-  selectedColor = '';
-  onChange(value) {
-    console.log(value.target.value);
-    this.selectedColor = value;
-  }
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {title: string}) {}
+  createForm: TableElement = {
+    Unidades: '',
+    Cantidad: 0 ,
+    Nombre: '' ,
+    Etiqueta: '' ,
+    NumBodega: 0,
+    NumLab: 0 ,
+    Observaciones: '' ,
+    PrepaProfe: '',
+    Editar: true
+  };
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {title: string, type: string}) {}
   ngOnInit() {
   }
-
+  onSave() {
+    if (this.data.type === 'create') {
+      /// creating element
+      /// check if any element is null
+      if (!(this.createForm.Cantidad !== null && this.createForm.Cantidad >= 0) || !this.createForm.Editar || !this.createForm.Etiqueta
+        || !this.createForm.Nombre || !(this.createForm.NumBodega !== null && this.createForm.NumBodega >= 0) ||
+        !(this.createForm.NumLab !== null && this.createForm.NumLab >= 0)
+        || !this.createForm.Observaciones || !this.createForm.PrepaProfe || !this.createForm.Unidades) {
+          console.log('no valid');
+          return;
+        }
+      /// submit data
+    }
+  }
 }

@@ -46,66 +46,91 @@
           <tr>
             <td>
               <input matInput
-              type="number"
               name = "unidades"
               required
-              ngModel
-              #unidadesInput = "ngModel"
-              placeholder="Ej. 132 pzs" > </td>
+              [(ngModel)] = "createForm.Unidades"
+              placeholder="Ej. 132 pzs"
+              #unidadesInput="ngModel">
+              <mat-error *ngIf="unidadesInput.invalid">¡Ingresa Unidades!</mat-error>
+            </td>
             <td>
               <input matInput
               type="number"
               name = "cantidad"
               required
-              ngModel
-              #cantidadInput = "ngModel"
-              placeholder="Ej. 34"> </td>
+              min=0
+              oninput="validity.valid||(value='');"
+              [(ngModel)] = "createForm.Cantidad"
+              #cantidadInput="ngModel"
+              placeholder="Ej. 34">
+              <mat-error *ngIf="cantidadInput.invalid">¡Ingresa Cantidad!</mat-error>
+            </td>
+
             <td>
               <input matInput
               name = "nombre"
               required
-              ngModel
-              #nombreInput = "ngModel"
-              placeholder="Ej. Silla"> </td>
+              #nombreInput="ngModel"
+              [(ngModel)] = "createForm.Nombre"
+              placeholder="Ej. Silla">
+              <mat-error *ngIf="nombreInput.invalid">¡Ingresa Nombre!</mat-error>
+            </td>
             <td>
-              <mat-select [(ngModel)] = "selectedColor"  [ngStyle]="{'background-color':selectedColor}">
+              <mat-select required [(ngModel)] = "createForm.Etiqueta" #colorInput ="ngModel"  [ngStyle]="{'background-color':createForm.Etiqueta}">
                 <mat-option *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.viewValue}">
                 </mat-option>
-              </mat-select> </td>
+              </mat-select>
+              <mat-error *ngIf="colorInput.invalid">¡Escoge Color!</mat-error>
+            </td>
             <td>
               <input matInput
               type = "number"
               name = "bodega"
+              min=0
+              oninput="validity.valid||(value='');"
               required
-              ngModel
               #bodegaInput = "ngModel"
-              placeholder="Ej. 21"> </td>
+              [(ngModel)] = "createForm.NumBodega"
+              placeholder="Ej. 21">
+              <mat-error *ngIf="bodegaInput.invalid">¡Ingresa Cantidad en Bodega!</mat-error>
+            </td>
             <td>
               <input matInput
               type = "number"
               name = "laboratorio"
+              min=0
+              oninput="validity.valid||(value='');"
               required
-              ngModel
               #labInput = "ngModel"
-              placeholder="Ej. 10"> </td>
+              [(ngModel)] = "createForm.NumLab"
+              placeholder="Ej. 10">
+              <mat-error *ngIf="labInput.invalid">¡Ingresa Cantidad en Laboratorio!</mat-error>
+            </td>
             <td>
-              <input matInput
+              <textarea matInput
               name = "observaciones"
               required
-              ngModel
-              #obsInput = "ngModel"
-              placeholder="Ej. roto"> </td>
+              matTextareaAutosize
+              matAutosizeMinRows=1
+              matAutosizeMaxRows=5
+              #observacionesInput = "ngModel"
+              [(ngModel)] = "createForm.Observaciones"
+              placeholder="Ej. roto"></textarea>
+              <mat-error *ngIf="observacionesInput.invalid">¡Ingresa Observaciones!</mat-error>
+            </td>
             <td>
-              <mat-select>
+              <mat-select required [(ngModel)] = "createForm.PrepaProfe" #nivelInput="ngModel">
                 <mat-option *ngFor="let level of levels" [value]="level">
                   {{level}}
                 </mat-option>
-              </mat-select> </td>
+              </mat-select>
+              <mat-error *ngIf="nivelInput.invalid">¡Escoge Nivel Educativo!</mat-error>
+            </td>
           </tr>
     </table>
       <mat-card-actions>
-        <button mat-button><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1 17l-5-5.299 1.399-1.43 3.574 3.736 6.572-7.007 1.455 1.403-8 8.597z"/></svg></button>
+        <button mat-button (click)="onSave()"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1 17l-5-5.299 1.399-1.43 3.574 3.736 6.572-7.007 1.455 1.403-8 8.597z"/></svg></button>
       </mat-card-actions>
     </mat-card>
   </div>
-<div>
+</div>

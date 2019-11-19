@@ -74,7 +74,7 @@
                 <!-- Editar Column-->
                 <ng-container matColumnDef="Editar">
                     <th mat-header-cell *matHeaderCellDef> Editar </th>
-                    <td mat-cell *matCellDef="let element"> <button *ngIf="element.Editar" mat-button mat-raised-button (click)="onCreate($event)">Editar</button> </td>
+                    <td mat-cell *matCellDef="let element"> <button *ngIf="element.Editar" mat-button mat-raised-button #editButton (click)="onCreate(editButton)" name="editButton">Editar</button> </td>
                 </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
