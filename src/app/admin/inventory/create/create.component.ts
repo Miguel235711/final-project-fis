@@ -38,6 +38,7 @@ export class CreateComponent implements OnInit {
     if ( this.data.type === 'create') {
       /// creating element
       /// check if any element is null
+      console.log('create onSave()');
       if (!(this.createForm.Cantidad !== null && this.createForm.Cantidad >= 0) || !this.createForm.Editar || !this.createForm.Etiqueta
         || !this.createForm.Nombre || !(this.createForm.NumBodega !== null && this.createForm.NumBodega >= 0) ||
         !(this.createForm.NumLab !== null && this.createForm.NumLab >= 0)
@@ -46,6 +47,8 @@ export class CreateComponent implements OnInit {
           return;
         }
       /// submit data
+    } else if (this.data.type === 'edit') {
+      console.log('edit onSave()');
     }
   }
 }
