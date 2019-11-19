@@ -1,5 +1,5 @@
 mat-form-field{
-  width:100%;
+  width:85%;
 }
 mat-spinner{
   margin:auto;
@@ -11,12 +11,17 @@ button{
   margin:auto;
 }
 #register{
-  float:right;
-  margin:auto;
+  float:rigth;
+  margin:30px;
 }
 img {
-  width: 100%;
+  width: 85%;
   height: auto;
+}
+.tam {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 div , #enter , #register{
   margin-top: 30px;
@@ -24,4 +29,3 @@ div , #enter , #register{
 mat-radio-button{
   margin-left: 30px;
 }
-
