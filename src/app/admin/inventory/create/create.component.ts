@@ -1,7 +1,7 @@
-import { Component, OnInit , Inject } from '@angular/core';
-import {MAT_DIALOG_DATA } from '@angular/material';
+import { Component, OnInit, Inject} from '@angular/core';
 import { ColorElement } from '../color-data.model';
 import { TableElement } from '../tableElement-data.model';
+import { MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   templateUrl: './create.component.html',
@@ -34,7 +34,7 @@ export class CreateComponent implements OnInit {
   ngOnInit() {
   }
   onSave() {
-    if (this.data.type === 'create') {
+    if ( this.data.type === 'create') {
       /// creating element
       /// check if any element is null
       if (!(this.createForm.Cantidad !== null && this.createForm.Cantidad >= 0) || !this.createForm.Editar || !this.createForm.Etiqueta
