@@ -8,4 +8,5 @@ export interface TableElement {
   Observaciones: string;
   PrepaProfe: string;
   Editar: boolean;
+  Borrar: boolean;
 }

@@ -32,8 +32,8 @@
                   Sales binarias, ternarias...
                 </mat-panel-description>
               </mat-expansion-panel-header>
+              <app-table></app-table>
               <!--> Here goes the chart <!-->
-              <button class="addButton" name ="addButton" mat-button #addButton (click)="createService.onCreate(addButton,'green')"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg></button>
             </mat-expansion-panel>
 
             <mat-expansion-panel>
@@ -45,8 +45,8 @@
                     Acidos minerales, sulfónicos, carboxílicos...
                   </mat-panel-description>
                 </mat-expansion-panel-header>
+                <app-table></app-table>
                 <!-->Here goes the chart<!-->
-                <button class="addButton" name ="addButton" mat-button #addButton (click)="createService.onCreate(addButton,'cyan')"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg></button>
               </mat-expansion-panel>
         </mat-accordion>
 
@@ -61,6 +61,33 @@
         Equipo tecnológico del laboratorio
       </mat-panel-description>
     </mat-expansion-panel-header>
+    <mat-accordion>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            2.A Vidrio
+          </mat-panel-title>
+          <mat-panel-description>
+            Materiales de vidrio
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-table></app-table>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+             2.B Otros
+            </mat-panel-title>
+            <mat-panel-description>
+              Otros...
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <app-table></app-table>
+          <!--> Here goes the chart <!-->
+        </mat-expansion-panel>
+    </mat-accordion>
  </mat-expansion-panel>
 
  <mat-expansion-panel>
@@ -72,5 +99,8 @@
       Sillas, mesas...
     </mat-panel-description>
   </mat-expansion-panel-header>
+  <app-table></app-table>
+   <!--> Here goes the chart <!-->
+
 </mat-expansion-panel>
 </mat-accordion>
