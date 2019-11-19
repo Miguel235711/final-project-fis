@@ -1,6 +1,6 @@
 export interface TableElement {
   Unidades: string;
-  Cantidad: string;
+  Cantidad: number;
   Nombre: string;
   Etiqueta: string;
   NumBodega: number;

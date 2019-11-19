@@ -22,19 +22,22 @@ export class CheckComponent implements OnInit {
     const name = clickedElement._elementRef.nativeElement.name;
     if (name === 'addButton') {
       console.log('addButton identified');
-      this.dialog.open(CreateComponent, { data: { title: 'Alta de ITEM' }} );
+      this.dialog.open(CreateComponent, { data: { title: 'Alta de ITEM' , type: 'create' }} );
+    } else if (name === 'editButton') {
+      console.log('edit button identified');
+      this.dialog.open(CreateComponent, {data: {title: 'Edición de ITEM', type: 'edit' }} );
     }
   }
 }
 
 const ELEMENT_DATA: TableElement[] = [
-  {Unidades: '3 frascos', Cantidad: '3 L', Nombre: 'Alcohol', Etiqueta: 'yellow' ,
+  {Unidades: '3 frascos', Cantidad: 3, Nombre: 'Alcohol', Etiqueta: 'yellow' ,
   NumBodega: 10, NumLab: 5 , Observaciones: '', PrepaProfe: 'Prepa' , Editar: true},
-  {Unidades: '2 frascos', Cantidad: '2 L', Nombre: 'Butidieno', Etiqueta: 'yellow',
+  {Unidades: '2 frascos', Cantidad: 2, Nombre: 'Butidieno', Etiqueta: 'yellow',
   NumBodega: 5, NumLab: 2 , Observaciones: '', PrepaProfe: 'Profesional', Editar: true},
-  {Unidades: '3 frascos', Cantidad: '3 L', Nombre: 'Nombre1', Etiqueta: 'yellow',
+  {Unidades: '3 frascos', Cantidad: 3, Nombre: 'Nombre1', Etiqueta: 'yellow',
   NumBodega: 7, NumLab: 4 , Observaciones: '', PrepaProfe: 'Prepa', Editar: true},
-  {Unidades: '4 frascos', Cantidad: '4 L', Nombre: 'Nombre2', Etiqueta: 'yellow',
+  {Unidades: '4 frascos', Cantidad: 4, Nombre: 'Nombre2', Etiqueta: 'yellow',
   NumBodega: 8, NumLab: 6 , Observaciones: '', PrepaProfe: 'Prepa', Editar: true},
 
 ];
