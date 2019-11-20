@@ -8,7 +8,7 @@ export class CreateService {
   onCreate(clickedElement, Etiqueta) {
     const name = clickedElement._elementRef.nativeElement.name;
     console.log('clickedElement: ', clickedElement);
-    console.log('etiqueta', Etiqueta);
+    console.log('etiqueta:', Etiqueta);
     if (name === 'addButton') {
       console.log('addButton identified');
       this.dialog.open(CreateComponent, { data: { title: 'Alta de ITEM' , type: 'create' , etiqueta: Etiqueta }} );
