@@ -19,23 +19,26 @@ export class ItemService {
       this.subjects[color] = new Subject<{tables: TableElement[]}>();
     }
   }
-  createItem(tableElement: TableElement, color: string) {
-    this.createSubjectIfNecessary(color);
+  getItem(id: string) {/// because it works asyncronosly
+    return this.http.get<{message: string , item: TableElement}>(
+      'http://localhost:3000/api/item/single?id=' + id); /// return our observable
+  }
+  createItem(tableElement: TableElement) {
+    this.createSubjectIfNecessary(tableElement.Etiqueta);
     console.log('table element to send to backend', tableElement);
     return this.http.post<{message: string, item: TableElement}>('http://localhost:3000/api/item/addItem', tableElement)
     .subscribe(responseData => {
       // this.router.navigate(['/']);
       console.log('success to post ');
-      console.log('create element', color);
+      console.log('create element', tableElement.Etiqueta);
       console.log('responseData: ' , responseData);
       console.log('table element: ', tableElement);
-      this.getItems(color);
+      this.getItems(tableElement.Etiqueta);
     }, error => {
       console.log(error);
       // this.authStatusListener.next(false);
     }); /// return observable
   }
-
   getItems(color: string) {
     this.createSubjectIfNecessary(color);
     const queryParams = `?color=${color}`;
@@ -52,5 +55,20 @@ export class ItemService {
   getItemUpdateListener(color: string) {
     this.createSubjectIfNecessary(color);
     return this.subjects[color].asObservable();
+  }
+  updatePost(item: TableElement, originalColor: string ) {
+    this.createSubjectIfNecessary(item.Etiqueta);
+    this.http
+      .put('http://localhost:3000/api/item/?id=' + item._id, item)
+      .subscribe(response => {
+        console.log(response);
+        this.getItems(item.Etiqueta);
+        if (originalColor !== item.Etiqueta) {
+            /// especial case when color changed
+            this.getItems(originalColor);
+        }
+      }, error => {
+        console.log('error in updatePost()');
+      });
   }
 }

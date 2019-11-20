@@ -2,6 +2,8 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const checkAuth = require('../middleware/check-auth');
+const mongoose = require('mongoose');
+
 
 const router = express.Router();///router
 const Item = require('../models/inventory/item');
@@ -52,6 +54,38 @@ router.get('',checkAuth,(req,res,next)=>{
         message:'Fetching Items failed'
       });
     });
+});
+router.put('',checkAuth,(req,res,next)=>{
+  console.log('req.query.id ' ,req.query.id);
+  console.log('item',req.body);
+  Item.updateOne({_id: req.query.id},req.body)
+    .then(response=>{
+      console.log('update',response);
+      res.status(201).json({message:'Item editado exitosamente'});
+    })
+    .catch(error=>{
+      console.log('error in put of item: ', error);
+      res.status(500).json({message:'Error interno para editar'});
+    });
+});
+router.get('/single',(req,res,next)=>{
+  let id = new mongoose.Types.ObjectId(req.query.id);
+  console.log(id);
+  Item.findById(id)
+  .then(foundItem=>{
+    if(foundItem){
+      console.log('found item', foundItem);
+      res.status(200).json({message:'Item encontrado',item:foundItem});
+    }else{
+      res.status(404).json({message:'Item no encontrado'});
+    }
+  })
+  .catch(error =>{
+    console.log(error);
+    res.status(500).json({
+      message:'Fetching post failed!'
+    });
+  });
 });
 
 module.exports = router;

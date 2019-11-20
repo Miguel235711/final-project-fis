@@ -12,10 +12,10 @@ export class CreateService {
     console.log('etiqueta:', Etiqueta);
     if (name === 'addButton') {
       console.log('addButton identified');
-      this.dialog.open(CreateComponent, { data: { title: 'Alta de ITEM' , type: 'create' , etiqueta: Etiqueta }} );
+      this.dialog.open(CreateComponent, { data: { title: 'Alta de ITEM' , type: 'create' , etiqueta: Etiqueta , id }} );
     } else if (name === 'editButton') {
       console.log('edit button identified');
-      this.dialog.open(CreateComponent, {data: {title: 'Edición de ITEM', type: 'edit' , etiqueta: Etiqueta} } );
+      this.dialog.open(CreateComponent, {data: {title: 'Edición de ITEM', type: 'edit' , etiqueta: Etiqueta , id } } );
     }
   }
 }
