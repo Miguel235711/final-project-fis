@@ -21,6 +21,8 @@ import {
   MatGridListModule
 } from '@angular/material';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './common/auth/login/login.component';
@@ -79,7 +81,8 @@ import { AuthInterceptor } from './common/auth/auth-interceptor';
     MatOptionModule,
     MatTableModule,
     MatIconModule,
-    MatGridListModule
+    MatGridListModule,
+    FlexLayoutModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},

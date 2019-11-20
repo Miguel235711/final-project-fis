@@ -9,4 +9,5 @@ export interface TableElement {
   PrepaProfe: string;
   Editar: boolean;
   Borrar: boolean;
+  _id: string;
 }

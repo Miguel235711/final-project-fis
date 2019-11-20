@@ -51,17 +51,17 @@
       <!-- Editar Column-->
       <ng-container matColumnDef="Editar">
           <th mat-header-cell *matHeaderCellDef> Editar </th>
-          <td mat-cell *matCellDef="let element"> <button *ngIf="element.Editar" mat-button mat-raised-button #editButton (click)="createService.onCreate(editButton,color)" name="editButton">Editar</button> </td>
+          <td mat-cell *matCellDef="let element"> <button *ngIf="element.Editar" mat-button #editButton (click)="createService.onCreate(editButton,color,element._id)" name="editButton"><img src="https://img.icons8.com/material-rounded/24/000000/edit.png"></button> </td>
       </ng-container>
 
       <!-- delet icon -->
       <ng-container matColumnDef="Borrar">
           <th mat-header-cell *matHeaderCellDef> Borrar </th>
-          <td mat-cell *matCellDef="let element"> <button *ngIf="element.Borrar" mat-button mat-raised-button> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg>  </button>   </td>
+          <td mat-cell *matCellDef="let element"> <button *ngIf="element.Borrar" mat-button #eraseButton> <img src="https://img.icons8.com/ios-glyphs/30/000000/filled-trash.png"> </button>   </td>
         </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    <button class="addButton" name ="addButton" mat-button #addButton (click)="createService.onCreate(addButton,color)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg></button>
+    <button class="addButton" name ="addButton" mat-button #addButton (click)="createService.onCreate(addButton,color,'none')"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/></svg></button>
   </div>
