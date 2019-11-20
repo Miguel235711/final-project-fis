@@ -32,9 +32,21 @@ export class CreateComponent implements OnInit {
     Borrar: true,
     _id: null
   };
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {title: string, type: string, etiqueta: string}, public itemService: ItemService) {}
+  originalColor = '';
+  constructor(
+  @Inject(MAT_DIALOG_DATA) public data: {title: string, type: string, etiqueta: string, id: string},
+  public itemService: ItemService
+  ) {}
   ngOnInit() {
     this.createForm.Etiqueta = this.data.etiqueta;
+    if (this.data.type === 'edit') {
+      this.itemService.getItem(this.data.id).subscribe(response => {
+        // console.log('editing the item: ', response);
+        this.originalColor = response.item.Etiqueta;
+        this.createForm = response.item;
+        /// console.log('createForm ' , this.createForm);
+      });
+    }
   }
   onSave() {
     if ( this.data.type === 'create') {
@@ -49,10 +61,11 @@ export class CreateComponent implements OnInit {
           return;
         }
       /// submit data
-      this.itemService.createItem(this.createForm, this.createForm.Etiqueta);
+      this.itemService.createItem(this.createForm);
       /// update front end
     } else if (this.data.type === 'edit') {
       console.log('edit onSave()');
+      this.itemService.updatePost(this.createForm, this.originalColor);
     }
   }
 }
