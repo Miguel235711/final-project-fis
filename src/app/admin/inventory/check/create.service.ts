@@ -5,7 +5,8 @@ import {MatDialog} from '@angular/material';
 @Injectable({providedIn: 'root'})
 export class CreateService {
   constructor(private dialog: MatDialog) {}
-  onCreate(clickedElement, Etiqueta) {
+  onCreate(clickedElement, Etiqueta: string, id: string) {
+    console.log('id:' , id);
     const name = clickedElement._elementRef.nativeElement.name;
     console.log('clickedElement: ', clickedElement);
     console.log('etiqueta:', Etiqueta);

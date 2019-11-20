@@ -24,8 +24,11 @@ router.post('/addItem',checkAuth,(req,res,next)=>{
   });
   console.log(item);
   item.save()
-  .then(result=>{
-    return res.status(201).json({message:'Item guardado correctamente.'});
+  .then(createdItem=>{
+    return res.status(201).json({
+      message:'Item guardado correctamente.',
+      item: {... createdItem , id: createdItem._id}
+    });
   })
   .catch(error=>{
     return res.status(500).json({message:'Item no se pudo guardar'});

@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'Inventory', component: ExcelComponent},
   {path: 'MyGroups', component: MygroupsComponent},
   {path: 'Search', component: SearchComponent},
-  {path: 'Check', component: CheckComponent}
+  {path: 'Check', component: CheckComponent},
 ];
 
 @NgModule({

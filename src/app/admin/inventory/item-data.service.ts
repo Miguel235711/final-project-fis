@@ -22,16 +22,20 @@ export class ItemService {
   createItem(tableElement: TableElement, color: string) {
     this.createSubjectIfNecessary(color);
     console.log('table element to send to backend', tableElement);
-    return this.http.post('http://localhost:3000/api/item/addItem', tableElement).subscribe(() => {
+    return this.http.post<{message: string, item: TableElement}>('http://localhost:3000/api/item/addItem', tableElement)
+    .subscribe(responseData => {
       // this.router.navigate(['/']);
       console.log('success to post ');
       console.log('create element', color);
+      console.log('responseData: ' , responseData);
+      console.log('table element: ', tableElement);
       this.getItems(color);
     }, error => {
       console.log(error);
       // this.authStatusListener.next(false);
     }); /// return observable
   }
+
   getItems(color: string) {
     this.createSubjectIfNecessary(color);
     const queryParams = `?color=${color}`;
