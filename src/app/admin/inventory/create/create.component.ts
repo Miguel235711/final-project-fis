@@ -48,7 +48,7 @@ export class CreateComponent implements OnInit {
           return;
         }
       /// submit data
-      this.itemService.createItem(this.createForm);
+      this.itemService.createItem(this.createForm, this.createForm.Etiqueta);
       /// update front end
     } else if (this.data.type === 'edit') {
       console.log('edit onSave()');

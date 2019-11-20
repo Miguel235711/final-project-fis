@@ -33,9 +33,10 @@ router.post('/addItem',checkAuth,(req,res,next)=>{
   console.log('item', item);
   //return res.status(201).json('item insertado correctamente');
 });
-router.get('',(req,res,next)=>{
+router.get('',checkAuth,(req,res,next)=>{
   ///get every single item
-  Item.find()
+  console.log('Etiqueta: ', req.query.color);
+  Item.find({Etiqueta:req.query.color})
     .then(fetchedItems=>{
       console.log(fetchedItems);
       res.status(200).json({

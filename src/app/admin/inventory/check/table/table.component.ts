@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Input } from '@angular/core';
 import { TableElement } from '../../tableElement-data.model';
 import { CreateService } from '../create.service';
 import { ItemService } from '../../item-data.service';
@@ -13,11 +13,13 @@ export class TableComponent implements OnInit {
   displayedColumns: string[] = ['Unidades', 'Cantidad', 'Nombre', 'Etiqueta' , 'NumBodega', 'NumLab', 'Observaciones', 'PrepaProfe',
   'Editar', 'Borrar'];
   ELEMENT_DATA: TableElement[];
+  @Input() color: string;
   itemServiceSubs: Subscription;
   constructor(public createService: CreateService, public itemService: ItemService) { }
   ngOnInit() {
-    this.itemService.getItems();
-    this.itemServiceSubs = this.itemService.getItemUpdateListener().subscribe((tableData: {tables: TableElement[]} ) => {
+    console.log('table color: ', this.color);
+    this.itemService.getItems(this.color);
+    this.itemServiceSubs = this.itemService.getItemUpdateListener(this.color).subscribe((tableData: {tables: TableElement[]} ) => {
       console.log('ngOnInit of table', tableData.tables);
       this.ELEMENT_DATA = tableData.tables;
     });
