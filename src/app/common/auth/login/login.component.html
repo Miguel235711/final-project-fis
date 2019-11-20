@@ -1,15 +1,16 @@
 <body>
-  <mat-grid-list cols="2">
-    <mat-grid-tile>
-    <img class=campo src="https://fs.itesm.mx/adfs/portal/illustration/illustration.jpg?id=85F11BA2A91AF5792D702D25E80622B11360B9495B7C67A7E11509F98CBAB498&rp=77a91927-6788-e911-a818-000d3a5de8c6">
-    </mat-grid-tile>
-    <mat-grid-tile id="login" >
-    <mat-card class=tam >
-      <mat-spinner *ngIf="isLoading"></mat-spinner>
-      <img src="assets/img/tecnologico-de-monterrey-black.png">
-      <form (submit)="onLogin(loginForm)" #loginForm= "ngForm" *ngIf="!isLoading"><!--#postForm is local reference to this form-->
-          <div>
-            <h4>Correo</h4>
+<table>
+<tr class="row">
+  <td class="column1">
+  <img src="https://fs.itesm.mx/adfs/portal/illustration/illustration.jpg?id=85F11BA2A91AF5792D702D25E80622B11360B9495B7C67A7E11509F98CBAB498&rp=77a91927-6788-e911-a818-000d3a5de8c6">
+  </td>
+  <td class="column2">
+  <mat-card>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <img src="assets/img/tecnologico-de-monterrey-black.png">
+    <form (submit)="onLogin(loginForm)" #loginForm= "ngForm" *ngIf="!isLoading"><!--#postForm is local reference to this form-->
+        <div>
+          <h4>Correo</h4>
             <mat-form-field>
                 <input
                   matInput
@@ -62,6 +63,7 @@
           </div>
       </form>
     </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
+  </td>
+</tr>
+</table>
 </body>
