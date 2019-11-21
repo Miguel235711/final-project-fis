@@ -13,6 +13,7 @@ export class AuthService {
   private userId: string;
   private userName: string;
   private userType: string;
+  private userGenre: string;
   /// to know if the user is authenticated or not
   private authStatusListener = new Subject<boolean>();
   private userInfoListener = new Subject<{userName: string, userType: string} >();
@@ -25,6 +26,9 @@ export class AuthService {
   }
   getUserId() {
     return this.userId;
+  }
+  getGenre() {
+    return this.userGenre;
   }
   getUserInfoListener() {
     return this.userInfoListener.asObservable();
@@ -48,7 +52,8 @@ export class AuthService {
       expiresIn: number,
       userId: string,
       userName: string,
-      userType: string}>('http://localhost:3000/api/user/login', authData).
+      userType: string,
+      userGenre: string}>('http://localhost:3000/api/user/login', authData).
       subscribe(response => {
         const token = response.token;
         this.token = token;
@@ -59,11 +64,12 @@ export class AuthService {
           this.setAuthTimer(expiresInDuration);
           this.isAuthenticated = true;
           this.userId = response.userId;
+          this.userGenre = response.userGenre;
           this.authStatusListener.next(true);
           const now = new Date();
           const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
           console.log('userName: ', response.userName);
-          this.saveAuthData(token, expirationDate, this.userId, response.userName, response.userType);
+          this.saveAuthData(token, expirationDate, this.userId, response.userName, response.userType, response.userGenre);
           console.log('redirect to /NewsFeed ');
           /// emmit event
           this.userName = response.userName;
@@ -100,6 +106,7 @@ export class AuthService {
       this.userId = authInformation.userId;
       this.userName = authInformation.userName;
       this.userType = authInformation.userType;
+      this.userGenre = authInformation.userGenre;
       this.setAuthTimer(expiresIn);
       this.authStatusListener.next(true);
       this.userInfoListener.next({userName: authInformation.userName, userType: authInformation.userType});
@@ -108,18 +115,20 @@ export class AuthService {
   logout() {
     this.token = null;
     this.userId = null;
+    this.userGenre = null;
     this.isAuthenticated = false;
     this.authStatusListener.next(false);
     this.router.navigate(['/']);
     this.clearAuthData();
     clearTimeout(this.tokenTime);
   }
-  private saveAuthData(token: string, expirationDate: Date, userId: string, userName: string , userType: string) {
+  private saveAuthData(token: string, expirationDate: Date, userId: string, userName: string , userType: string, userGenre: string) {
     localStorage.setItem('token', token);
     localStorage.setItem('expiration', expirationDate.toISOString());
     localStorage.setItem('userId', userId);
     localStorage.setItem('userName', userName);
     localStorage.setItem('userType', userType);
+    localStorage.setItem('userGenre', userGenre);
   }
   private clearAuthData() {
     localStorage.removeItem('token');
@@ -127,6 +136,7 @@ export class AuthService {
     localStorage.removeItem('userId');
     localStorage.removeItem('userName');
     localStorage.removeItem('userType');
+    localStorage.removeItem('userGenre');
   }
   private getAuthData() {
     /// get auth data from local storage
@@ -135,6 +145,7 @@ export class AuthService {
     const userId = localStorage.getItem('userId');
     const userName = localStorage.getItem('userName');
     const userType = localStorage.getItem('userType');
+    const userGenre = localStorage.getItem('userGenre');
     if (!token || !expirationDate) {
       return;
     }
@@ -143,7 +154,8 @@ export class AuthService {
       expirationDate: new Date(expirationDate),
       userId,
       userName,
-      userType
+      userType,
+      userGenre
     };
   }
   getUserName() {
