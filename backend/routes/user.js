@@ -112,7 +112,8 @@ function processUser(fetchedUser,req,res){
         expiresIn: 3600,
         userId: fetchedUser._id,
         userName: fetchedUser.name,
-        userType: req.body.isAdmin?'Admin':'Estudiante'
+        userType: req.body.isAdmin?'Admin':'Estudiante',
+        userGenre: fetchedUser.genre
       });
       ///extra userId for optimization purposes
     })

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth/auth-data.service';
 
 @Component({
   selector: 'app-newsfeed',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./newsfeed.component.css']
 })
 export class NewsfeedComponent implements OnInit {
-
-  constructor() { }
-
+  genreSuffix = 'a';
+  constructor(public authService: AuthService) { }
   ngOnInit() {
+    if (this.authService.getGenre() === 'Hombre'){
+      this.genreSuffix = 'o';
+    }
   }
 
 }
