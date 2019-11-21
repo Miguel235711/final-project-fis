@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {CreateComponent } from '../create/create.component';
+import {UnsubscribeComponent} from '../unsubscribe/unsubscribe.component';
 import {MatDialog} from '@angular/material';
 
 @Injectable({providedIn: 'root'})
@@ -17,5 +18,10 @@ export class CreateService {
       console.log('edit button identified');
       this.dialog.open(CreateComponent, {data: {title: 'Edición de ITEM', type: 'edit' , etiqueta: Etiqueta , id } } );
     }
+  }
+  onDelete(etiqueta: string , id: string) {
+    console.log('onDelete color', etiqueta);
+    console.log('onDelete id', id);
+    this.dialog.open(UnsubscribeComponent, {data: {etiqueta, id} });
   }
 }

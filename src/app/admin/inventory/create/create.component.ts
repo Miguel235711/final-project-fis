@@ -65,7 +65,7 @@ export class CreateComponent implements OnInit {
       /// update front end
     } else if (this.data.type === 'edit') {
       console.log('edit onSave()');
-      this.itemService.updatePost(this.createForm, this.originalColor);
+      this.itemService.updateItem(this.createForm, this.originalColor);
     }
   }
 }
