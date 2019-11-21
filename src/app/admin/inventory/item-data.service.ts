@@ -1,7 +1,7 @@
 import { Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Subject, VirtualTimeScheduler } from 'rxjs';
 import { TableElement } from './tableElement-data.model';
 import { stringify } from 'querystring';
 import {SHashMap } from './SubjectHashMap';
@@ -56,7 +56,7 @@ export class ItemService {
     this.createSubjectIfNecessary(color);
     return this.subjects[color].asObservable();
   }
-  updatePost(item: TableElement, originalColor: string ) {
+  updateItem(item: TableElement, originalColor: string ) {
     this.createSubjectIfNecessary(item.Etiqueta);
     this.http
       .put('http://localhost:3000/api/item/?id=' + item._id, item)
@@ -69,6 +69,17 @@ export class ItemService {
         }
       }, error => {
         console.log('error in updatePost()');
+      });
+  }
+  unsubscribeItem(color: string, id: string ) {
+    this.createSubjectIfNecessary(color);
+    console.log('unsubscribeItem id: ' , id);
+    this.http
+      .delete('http://localhost:3000/api/item/?id=' + id)
+      .subscribe(response => {
+        this.getItems(color);
+      }, error => {
+        console.log('error in unsubscribeItem');
       });
   }
 }

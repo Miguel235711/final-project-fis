@@ -10,7 +10,7 @@ const Item = require('../models/inventory/item');
 
 router.post('/addItem',checkAuth,(req,res,next)=>{
   //return res.status(200).json('addItemPost');
-  console.log(req.body);
+  //console.log(req.body);
   const item = new Item({
     Unidades: req.body.Unidades,
     Cantidad: req.body.Cantidad,
@@ -40,10 +40,10 @@ router.post('/addItem',checkAuth,(req,res,next)=>{
 });
 router.get('',checkAuth,(req,res,next)=>{
   ///get every single item
-  console.log('Etiqueta: ', req.query.color);
-  Item.find({Etiqueta:req.query.color})
+  //console.log('Etiqueta: ', req.query.color);
+  Item.find({Etiqueta:req.query.color,Activo:true})
     .then(fetchedItems=>{
-      console.log(fetchedItems);
+      //console.log(fetchedItems);
       res.status(200).json({
         message: 'Items fetched successfully',
         items: fetchedItems
@@ -58,6 +58,7 @@ router.get('',checkAuth,(req,res,next)=>{
 router.put('',checkAuth,(req,res,next)=>{
   console.log('req.query.id ' ,req.query.id);
   console.log('item',req.body);
+  console.log('put serverside: ',req.body);
   Item.updateOne({_id: req.query.id},req.body)
     .then(response=>{
       console.log('update',response);
@@ -66,6 +67,18 @@ router.put('',checkAuth,(req,res,next)=>{
     .catch(error=>{
       console.log('error in put of item: ', error);
       res.status(500).json({message:'Error interno para editar'});
+    });
+});
+router.delete('',checkAuth,(req,res,next)=>{
+  console.log('req.query.id ' ,req.query.id);
+  Item.updateOne({_id: req.query.id},{Activo:false})
+    .then(response=>{
+      console.log('delete',response);
+      res.status(201).json({message:'Item dado de baja exitosamente'});
+    })
+    .catch(error=>{
+      console.log('error in delete of item: ', error);
+      res.status(500).json({message:'Error interno para dar de baja'});
     });
 });
 router.get('/single',(req,res,next)=>{
@@ -87,5 +100,4 @@ router.get('/single',(req,res,next)=>{
     });
   });
 });
-
 module.exports = router;

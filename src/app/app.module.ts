@@ -41,6 +41,7 @@ import { SuccessInterceptor } from './success-interceptor';
 import { CreateComponent } from './admin/inventory/create/create.component';
 import { TableComponent } from './admin/inventory/check/table/table.component';
 import { AuthInterceptor } from './common/auth/auth-interceptor';
+import { UnsubscribeComponent } from './admin/inventory/unsubscribe/unsubscribe.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { AuthInterceptor } from './common/auth/auth-interceptor';
     CheckComponent,
     ErrorComponent,
     CreateComponent,
-    TableComponent
+    TableComponent,
+    UnsubscribeComponent
   ],
   imports: [
     BrowserModule,
@@ -90,6 +92,6 @@ import { AuthInterceptor } from './common/auth/auth-interceptor';
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ErrorComponent, CreateComponent]
+  entryComponents: [ErrorComponent, CreateComponent, UnsubscribeComponent]
 })
 export class AppModule { }
