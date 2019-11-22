@@ -25,8 +25,6 @@ export class AuthGuard implements CanActivate {
       /// redirect because client shouldn't access this route
     } else if (route.url[0].path === 'Inventory' && this.authService.getUserType() === 'Estudiante') {
       this.router.navigate(['/NewsFeed']);
-    } else if (route.url[0].path === '/') {
-      this.router.navigate(['/NewsFeed']);
     }
     return isAuth;
   }

@@ -1,6 +1,7 @@
 <mat-card>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <img src="assets/img/tecnologico-de-monterrey-black.png">
+  <h1>Registrar</h1>
   <form (submit)="onSignup(loginForm)" #loginForm= "ngForm" *ngIf="!isLoading"><!--#postForm is local reference to this form-->
     <div>
         <h4>Nombre</h4>
