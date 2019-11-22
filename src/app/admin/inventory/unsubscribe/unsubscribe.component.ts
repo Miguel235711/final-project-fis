@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/common/auth/auth-data.service';
 export class UnsubscribeComponent implements OnInit {
   genreFinish = 'a';
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: {etiqueta: string, id: string},
+    @Inject(MAT_DIALOG_DATA) public data: {etiqueta: string, id: string, urlType: string},
     public itemService: ItemService,
     public authService: AuthService
     ,
@@ -26,7 +26,7 @@ export class UnsubscribeComponent implements OnInit {
   }
   onUnsubscribe() {
     console.log('onUnsubscribe this.data', this.data);
-    this.itemService.unsubscribeItem(this.data.etiqueta, this.data.id);
+    this.itemService.unsubscribeItem(this.data.etiqueta, this.data.id, this.data.urlType);
     this.dialogRef.close();
   }
 }

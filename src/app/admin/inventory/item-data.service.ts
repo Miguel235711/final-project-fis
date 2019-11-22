@@ -106,13 +106,18 @@ export class ItemService {
         console.log('error in updatePost()');
       });
   }
-  unsubscribeItem(color: string, id: string ) {
+  unsubscribeItem(color: string, id: string, urlType: string ) {
     this.createSubjectIfNecessary(color);
     console.log('unsubscribeItem id: ' , id);
     this.http
       .delete('http://localhost:3000/api/item/?id=' + id)
       .subscribe(response => {
-        this.getItems(color);
+        console.log('urlType', urlType);
+        if (urlType === 'Check') {
+          this.getItems(color);
+        } else {
+          this.getItemsFiltered(this.filterDefaultElement); /// bug here
+        }
       }, error => {
         console.log('error in unsubscribeItem');
       });

@@ -19,9 +19,9 @@ export class CreateService {
       this.dialog.open(CreateComponent, {data: {title: 'Edición de ITEM', type: 'edit' , etiqueta: Etiqueta , id , urlType } } );
     }
   }
-  onDelete(etiqueta: string , id: string) {
+  onDelete(etiqueta: string , id: string, urlType: string) {
     console.log('onDelete color', etiqueta);
     console.log('onDelete id', id);
-    this.dialog.open(UnsubscribeComponent, {data: {etiqueta, id} });
+    this.dialog.open(UnsubscribeComponent, {data: {etiqueta, id, urlType} });
   }
 }
