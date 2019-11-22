@@ -9,18 +9,19 @@ import { ExcelComponent } from './admin/inventory/excel/excel.component';
 import { MygroupsComponent } from './admin/mygroups/mygroups.component';
 import { SearchComponent } from './admin/inventory/search/search.component';
 import { CheckComponent } from './admin/inventory/check/check.component';
+import {AuthGuard} from './common/auth/auth.guard';
 
 
 const routes: Routes = [
   {path: '', component: LoginComponent },
-  {path: 'forgot' , component: ForgotComponent },
+  {path: 'forgot' , component: ForgotComponent, canActivate: [AuthGuard]},
   {path: 'signup' , component: SignupComponent},
-  {path: 'NewsFeed', component: NewsfeedComponent},
-  {path: 'Practices', component: PracticesComponent},
-  {path: 'Inventory', component: ExcelComponent},
-  {path: 'MyGroups', component: MygroupsComponent},
-  {path: 'Search', component: SearchComponent},
-  {path: 'Check', component: CheckComponent},
+  {path: 'NewsFeed', component: NewsfeedComponent, canActivate: [AuthGuard]},
+  {path: 'Practices', component: PracticesComponent, canActivate: [AuthGuard]},
+  {path: 'Inventory', component: ExcelComponent, canActivate: [AuthGuard]},
+  {path: 'MyGroups', component: MygroupsComponent, canActivate: [AuthGuard]},
+  {path: 'Search', component: SearchComponent, canActivate: [AuthGuard]},
+  {path: 'Check', component: CheckComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

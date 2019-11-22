@@ -60,7 +60,7 @@ router.get('',checkAuth,(req,res,next)=>{
     console.log('queryColor 1', queryColor);
     console.log('queryNombre',queryKeyWord);
     const orExpression = {$or : [{Nombre: new RegExp(queryKeyWord,'i')},{Observaciones: new RegExp(queryKeyWord,'i')}]};
-    Item.find({$and:[orExpression,{Etiqueta: new RegExp(queryColor)}]})
+    Item.find({$and:[orExpression,{Etiqueta: new RegExp(queryColor)}],Activo:true})
       .then(fetchedItems=>{
         console.log('fetched items in filtering',fetchedItems);
         res.status(200).json({

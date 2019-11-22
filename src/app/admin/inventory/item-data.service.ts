@@ -14,6 +14,10 @@ export class ItemService {
   filterSubject: Subject<{tables: TableElement[]}> = new Subject<{tables: TableElement[]}>() ;
   subjects: SHashMap = {};
   constructor(private http: HttpClient, private router: Router) {}
+  filterDefaultElement: Filter = {
+    keyword: undefined,
+    color: undefined
+  };
   private createSubjectIfNecessary(color: string) {
     if (!this.subjects[color]) {
       /// create subject
@@ -36,6 +40,7 @@ export class ItemService {
       console.log('responseData: ' , responseData);
       console.log('table element: ', tableElement);
       this.getItems(tableElement.Etiqueta);
+      this.getItemsFiltered(this.filterDefaultElement);
     }, error => {
       console.log(error);
       // this.authStatusListener.next(false);

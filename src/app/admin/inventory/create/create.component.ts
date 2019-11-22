@@ -15,6 +15,7 @@ export class CreateComponent implements OnInit {
     {value: 'yellow', viewValue: 'yellow'},
     {value: 'green', viewValue: 'green'},
     {value: 'cyan', viewValue: 'cyan'},
+    {value: 'pink', viewValue: 'pink'},
     {value: 'blue', viewValue: 'blue'},
     {value: 'orange', viewValue: 'orange'},
     {value: 'gray', viewValue: 'gray'}
