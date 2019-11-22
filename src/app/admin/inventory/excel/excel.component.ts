@@ -1,4 +1,5 @@
 import { Component, OnInit, NgModule } from '@angular/core';
+import {TableElement} from '../tableElement-data.model';
 
 @Component({
   selector: 'app-excel',
@@ -8,7 +9,7 @@ import { Component, OnInit, NgModule } from '@angular/core';
 export class ExcelComponent implements OnInit {
 
   constructor() { }
-
+  tableElements: TableElement[] = [];
   ngOnInit() {
   }
   onExcelPicked(event: Event) {

@@ -40,20 +40,58 @@ router.post('/addItem',checkAuth,(req,res,next)=>{
 });
 router.get('',checkAuth,(req,res,next)=>{
   ///get every single item
+  console.log('req.query: ',req.query);
   //console.log('Etiqueta: ', req.query.color);
-  Item.find({Etiqueta:req.query.color,Activo:true})
-    .then(fetchedItems=>{
-      //console.log(fetchedItems);
-      res.status(200).json({
-        message: 'Items fetched successfully',
-        items: fetchedItems
+  if(req.query.type==='filter'){
+    ///filter by these properties
+    console.log('filter by these properties');
+    let queryColor = '.*';
+    console.log('queryColor 0 ', queryColor);
+    console.log('req.query.color',req.query.color);
+    if(req.query.color!="white"&&req.query.color!="undefined"){
+      queryColor=req.query.color;
+    }
+    let queryKeyWord = '.*';
+    console.log('req.query.keyword',req.query.keyword);
+    if(req.query.keyword!="undefined"&&req.query.keyword!=''){
+      console.log('modifying queyNombre');
+      queryKeyWord=req.query.keyword;
+    }
+    console.log('queryColor 1', queryColor);
+    console.log('queryNombre',queryKeyWord);
+    const orExpression = {$or : [{Nombre: new RegExp(queryKeyWord,'i')},{Observaciones: new RegExp(queryKeyWord,'i')}]};
+    Item.find({$and:[orExpression,{Etiqueta: new RegExp(queryColor)}]})
+      .then(fetchedItems=>{
+        console.log('fetched items in filtering',fetchedItems);
+        res.status(200).json({
+          message: 'Items fetched successfully',
+          items: fetchedItems
+        });
+      })
+      .catch(errors=>{
+        console.log('error in filtering',errors);
+        res.status(500).json({
+          message:'Fetching Items failed'
+        });
       });
-    })
-    .catch(error=>{
-      res.status(500).json({
-        message:'Fetching Items failed'
+  }else if(req.query.type==='color'){
+    ///filter by only color
+    Item.find({Etiqueta:req.query.color,Activo:true})
+      .then(fetchedItems=>{
+        //console.log(fetchedItems);
+        res.status(200).json({
+          message: 'Items fetched successfully',
+          items: fetchedItems
+        });
+      })
+      .catch(error=>{
+        res.status(500).json({
+          message:'Fetching Items failed'
+        });
       });
-    });
+    }else{
+      res.status(500).json({message:'query retrieving items failed'});
+    }
 });
 router.put('',checkAuth,(req,res,next)=>{
   console.log('req.query.id ' ,req.query.id);
