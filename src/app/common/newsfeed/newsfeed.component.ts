@@ -13,6 +13,9 @@ export class NewsfeedComponent implements OnInit {
     if (this.authService.getGenre() === 'Hombre'){
       this.genreSuffix = 'o';
     }
+    if (this.authService.getGenre() === 'Otro'){
+      this.genreSuffix = 'o(a)';
+    }
   }
 
 }
