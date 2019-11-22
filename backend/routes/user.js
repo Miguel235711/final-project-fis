@@ -20,13 +20,13 @@ function saveStudent(body,res,hash){
   student.save()
   .then(result=>{
     return res.status(201).json({
-      message: 'Student created',
+      message: 'Estudiante Creado',
       result: result
     });
   })
   .catch(err=>{
     return res.status(500).json({
-    message: "Student signup failed!"
+    message: "¡Registro de Estudiante Falló!"
     });
   });
 }
@@ -44,13 +44,13 @@ function saveAdmin(body,res,hash){
   admin.save()
   .then(result=>{
     return res.status(201).json({
-      message: 'Admin created',
+      message: 'Administrador creado',
       result: result
     });
   })
   .catch(err=>{
     return res.status(500).json({
-    message: "Admin signup failed!"
+    message: "¡Registro de Estudiante Falló!"
     });
   });
 }
@@ -69,7 +69,7 @@ router.post('/signup',(req,res,next)=>{
   .then(result=>{
     console.log(result);
     if(!result){
-      return res.status(401).json({message:'key not found'});
+      return res.status(401).json({message:'¡Llave no encontrada!'});
     }
     //sendMail();
     ///test if mail exists
@@ -97,7 +97,7 @@ function processUser(fetchedUser,req,res){
       ///unsuccessfull match
       console.log('unsuccessfull match');
         return res.status(401).json({
-          message: 'Contraseña no válida'
+          message: '¡Contraseña no válida!'
         });
       }
       const token = jwt.sign(
@@ -134,7 +134,7 @@ router.post('/login',(req,res,next)=>{
       .then(student =>{
         if(!student){
           ///no student found
-          return res.status(401).json({message:'Correo de Estudiante no encontrado'});
+          return res.status(401).json({message:'¡Correo de Estudiante no encontrado!'});
         }
         ///student found, process it
         console.log('going to process student');
@@ -145,7 +145,7 @@ router.post('/login',(req,res,next)=>{
       .then(admin=>{
         if(!admin){
           ///no admin found
-          return res.status(401).json({message:'Correo de Administrador no encontrado'});
+          return res.status(401).json({message:'¡Correo de Administrador no encontrado!'});
         }else{
           ///admin found
           processUser(admin,req,res);
