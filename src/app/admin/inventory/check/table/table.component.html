@@ -57,7 +57,7 @@
       <!-- delet icon -->
       <ng-container matColumnDef="Borrar">
           <th mat-header-cell *matHeaderCellDef> Borrar </th>
-          <td mat-cell *matCellDef="let element"> <button *ngIf="element.Borrar" mat-button #eraseButton (click) ="createService.onDelete(color,element._id)" > <img src="https://img.icons8.com/ios-glyphs/30/000000/filled-trash.png"> </button>   </td>
+          <td mat-cell *matCellDef="let element"> <button *ngIf="element.Borrar" mat-button #eraseButton (click) ="createService.onDelete(color,element._id,urlType)" > <img src="https://img.icons8.com/ios-glyphs/30/000000/filled-trash.png"> </button>   </td>
         </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
