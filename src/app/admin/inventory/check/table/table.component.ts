@@ -14,6 +14,7 @@ export class TableComponent implements OnInit {
   'Editar', 'Borrar'];
   ELEMENT_DATA: TableElement[];
   @Input() color: string;
+  @Input() urlType: string;
   itemServiceSubs: Subscription;
   itemFilterServiceSubs: Subscription;
   constructor(public createService: CreateService, public itemService: ItemService) { }
