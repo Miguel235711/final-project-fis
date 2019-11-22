@@ -109,7 +109,7 @@ function processUser(fetchedUser,req,res){
       ///some problems to display in front but token correctly sent
       return res.status(200).json({
         token: token,
-        expiresIn: 3600,
+        expiresIn: 7200,
         userId: fetchedUser._id,
         userName: fetchedUser.name,
         userType: req.body.isAdmin?'Admin':'Estudiante',

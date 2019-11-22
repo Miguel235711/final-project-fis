@@ -42,6 +42,7 @@ import { CreateComponent } from './admin/inventory/create/create.component';
 import { TableComponent } from './admin/inventory/check/table/table.component';
 import { AuthInterceptor } from './common/auth/auth-interceptor';
 import { UnsubscribeComponent } from './admin/inventory/unsubscribe/unsubscribe.component';
+import { AuthGuard } from './common/auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,8 @@ import { UnsubscribeComponent } from './admin/inventory/unsubscribe/unsubscribe.
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: SuccessInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    [AuthGuard]
   ],
   bootstrap: [AppComponent],
   entryComponents: [ErrorComponent, CreateComponent, UnsubscribeComponent]
