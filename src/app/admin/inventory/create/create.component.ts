@@ -1,8 +1,10 @@
-import { Component, OnInit, Inject} from '@angular/core';
+import { Component, OnInit, Inject, Input} from '@angular/core';
 import { ColorElement } from '../color-data.model';
 import { TableElement } from '../tableElement-data.model';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import {ItemService } from '../item-data.service';
+import {MatDialogRef } from '@angular/material';
+import {UnsubscribeComponent} from '../unsubscribe/unsubscribe.component';
 @Component({
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css']
@@ -35,8 +37,9 @@ export class CreateComponent implements OnInit {
   };
   originalColor = '';
   constructor(
-  @Inject(MAT_DIALOG_DATA) public data: {title: string, type: string, etiqueta: string, id: string},
-  public itemService: ItemService
+  @Inject(MAT_DIALOG_DATA) public data: {title: string, type: string, etiqueta: string, id: string, urlType: string},
+  public itemService: ItemService,
+  private dialogRef: MatDialogRef<UnsubscribeComponent>
   ) {}
   ngOnInit() {
     this.createForm.Etiqueta = this.data.etiqueta;
@@ -62,11 +65,12 @@ export class CreateComponent implements OnInit {
           return;
         }
       /// submit data
-      this.itemService.createItem(this.createForm);
+      this.itemService.createItem(this.createForm, this.data.urlType);
       /// update front end
     } else if (this.data.type === 'edit') {
       console.log('edit onSave()');
-      this.itemService.updateItem(this.createForm, this.originalColor);
+      this.itemService.updateItem(this.createForm, this.originalColor, this.data.urlType);
+      this.dialogRef.close();
     }
   }
 }

@@ -29,7 +29,7 @@ export class ItemService {
     return this.http.get<{message: string , item: TableElement}>(
       'http://localhost:3000/api/item/single?id=' + id); /// return our observable
   }
-  createItem(tableElement: TableElement) {
+  createItem(tableElement: TableElement, urlType: string) {
     this.createSubjectIfNecessary(tableElement.Etiqueta);
     console.log('table element to send to backend', tableElement);
     return this.http.post<{message: string, item: TableElement}>('http://localhost:3000/api/item/addItem', tableElement)
@@ -39,8 +39,11 @@ export class ItemService {
       console.log('create element', tableElement.Etiqueta);
       console.log('responseData: ' , responseData);
       console.log('table element: ', tableElement);
-      this.getItems(tableElement.Etiqueta);
-      this.getItemsFiltered(this.filterDefaultElement);
+      if (urlType === 'Search') {
+        this.getItemsFiltered(this.filterDefaultElement);
+      } else {
+        this.getItems(tableElement.Etiqueta);
+      }
     }, error => {
       console.log(error);
       // this.authStatusListener.next(false);
@@ -61,6 +64,8 @@ export class ItemService {
     });
   }
   getItemsFiltered(filterElement: Filter) {
+    this.filterDefaultElement = filterElement;
+    console.log('this.filterDefaultElement', this.filterDefaultElement);
     const type = 'filter';
     const queryParams =
     `?type=${type}&keyword=${filterElement.keyword}&color=${filterElement.color}`;
@@ -81,28 +86,38 @@ export class ItemService {
   getItemFilterUpdateListener() {
     return this.filterSubject.asObservable();
   }
-  updateItem(item: TableElement, originalColor: string ) {
+  updateItem(item: TableElement, originalColor: string, urlType: string ) {
     this.createSubjectIfNecessary(item.Etiqueta);
     this.http
       .put('http://localhost:3000/api/item/?id=' + item._id, item)
       .subscribe(response => {
         console.log(response);
-        this.getItems(item.Etiqueta);
-        if (originalColor !== item.Etiqueta) {
+        console.log(item.Etiqueta);
+        if (urlType === 'Search') {
+          this.getItemsFiltered(this.filterDefaultElement);
+        } else {
+          this.getItems(item.Etiqueta);
+          if (originalColor !== item.Etiqueta) {
             /// especial case when color changed
             this.getItems(originalColor);
+          }
         }
       }, error => {
         console.log('error in updatePost()');
       });
   }
-  unsubscribeItem(color: string, id: string ) {
+  unsubscribeItem(color: string, id: string, urlType: string ) {
     this.createSubjectIfNecessary(color);
     console.log('unsubscribeItem id: ' , id);
     this.http
       .delete('http://localhost:3000/api/item/?id=' + id)
       .subscribe(response => {
-        this.getItems(color);
+        console.log('urlType', urlType);
+        if (urlType === 'Check') {
+          this.getItems(color);
+        } else {
+          this.getItemsFiltered(this.filterDefaultElement); /// bug here
+        }
       }, error => {
         console.log('error in unsubscribeItem');
       });
