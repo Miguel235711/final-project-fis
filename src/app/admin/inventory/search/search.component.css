@@ -10,7 +10,11 @@ div{
 {
   background-color: transparent;
 }
-img {
+img{
   width: 100%;
   height: auto;
+}
+
+.contenedora{
+  margin-bottom: 50px;
 }

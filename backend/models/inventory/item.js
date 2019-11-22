@@ -7,7 +7,7 @@ const itemSchema = mongoose.Schema({///Constructor
   Unidades: {type:String,required:true},
   Cantidad: {type:Number,required:true},
   Nombre: {type:String, required:true},
-  Etiqueta: {type:String, required:true, enum: ['yellow','green','cyan','blue','orange','gray']},
+  Etiqueta: {type:String, required:true, enum: ['yellow','green','cyan','blue','orange','gray','pink']},
   NumBodega: {type:Number, required:true},
   NumLab: {type: Number, required:true},
   Observaciones: {type:String, required:true},

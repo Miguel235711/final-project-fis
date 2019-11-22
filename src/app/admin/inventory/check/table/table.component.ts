@@ -15,12 +15,18 @@ export class TableComponent implements OnInit {
   ELEMENT_DATA: TableElement[];
   @Input() color: string;
   itemServiceSubs: Subscription;
+  itemFilterServiceSubs: Subscription;
   constructor(public createService: CreateService, public itemService: ItemService) { }
   ngOnInit() {
     console.log('table color: ', this.color);
-    this.itemService.getItems(this.color);
+    if (this.color !== undefined) {
+      this.itemService.getItems(this.color);
+    }
     this.itemServiceSubs = this.itemService.getItemUpdateListener(this.color).subscribe((tableData: {tables: TableElement[]} ) => {
       console.log('ngOnInit of table', tableData.tables);
+      this.ELEMENT_DATA = tableData.tables;
+    });
+    this.itemFilterServiceSubs = this.itemService.getItemFilterUpdateListener().subscribe((tableData: {tables: TableElement[]}) => {
       this.ELEMENT_DATA = tableData.tables;
     });
   }

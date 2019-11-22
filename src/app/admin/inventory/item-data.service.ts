@@ -5,11 +5,13 @@ import { Subject, VirtualTimeScheduler } from 'rxjs';
 import { TableElement } from './tableElement-data.model';
 import { stringify } from 'querystring';
 import {SHashMap } from './SubjectHashMap';
+import {Filter} from '../inventory/search/filter.model';
 
 @Injectable({providedIn: 'root'})
 export class ItemService {
   /// to know if the user is authenticated or not
   private tables: TableElement[] = [];
+  filterSubject: Subject<{tables: TableElement[]}> = new Subject<{tables: TableElement[]}>() ;
   subjects: SHashMap = {};
   constructor(private http: HttpClient, private router: Router) {}
   private createSubjectIfNecessary(color: string) {
@@ -41,7 +43,8 @@ export class ItemService {
   }
   getItems(color: string) {
     this.createSubjectIfNecessary(color);
-    const queryParams = `?color=${color}`;
+    const type = 'color';
+    const queryParams = `?type=${type}&color=${color}`;
     this.http
     .get<{message: string, items: TableElement [] }>('http://localhost:3000/api/item' + queryParams).subscribe(response => {
       console.log(response);
@@ -52,9 +55,26 @@ export class ItemService {
       console.log('error in getItems()', error);
     });
   }
+  getItemsFiltered(filterElement: Filter) {
+    const type = 'filter';
+    const queryParams =
+    `?type=${type}&keyword=${filterElement.keyword}&color=${filterElement.color}`;
+    console.log('query', queryParams);
+    this.http
+    .get<{message: string, items: TableElement[]}>('http://localhost:3000/api/item' + queryParams).subscribe(response => {
+      this.tables = response.items;
+      console.log('update subject');
+      this.filterSubject.next({tables: [...this.tables]});
+    }, error => {
+      console.log('error getItemsFilterd()', error);
+    });
+  }
   getItemUpdateListener(color: string) {
     this.createSubjectIfNecessary(color);
     return this.subjects[color].asObservable();
+  }
+  getItemFilterUpdateListener() {
+    return this.filterSubject.asObservable();
   }
   updateItem(item: TableElement, originalColor: string ) {
     this.createSubjectIfNecessary(item.Etiqueta);
