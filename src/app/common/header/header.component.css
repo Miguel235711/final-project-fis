@@ -12,10 +12,11 @@ ul{
 }
 mat-expansion-panel{
   position: fixed;
-  right:0;
+  right:50px;
+  height: auto;
 }
 mat-action-row{
   margin-left:0;
-  margin-right:auto;
+  margin-right: auto;
 }
 
