@@ -10,13 +10,18 @@ a{
 ul{
   display:flex;
 }
-mat-expansion-panel{
-  position: fixed;
-  right:50px;
-  height: auto;
-}
 mat-action-row{
   margin-left:0;
   margin-right: auto;
+}
+mat-accordion,mat-expansion-panel{
+  background-color: lightblue;
+  font-size:12px;
+  font-family: 'Times New Roman', Times, serif;
+  position: static;
+  top:8px;
+  position: fixed;
+  right:25px;
+  height: auto;
 }
 

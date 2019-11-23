@@ -9,4 +9,4 @@ const keySchema = mongoose.Schema({///Constructor
 
 keySchema.plugin(uniqueValidator);///to validate unique
 
-module.exports = mongoose.model('Key',keySchema);////to use it outside this file
+module.exports  = { StudentKey : mongoose.model('StudentKey',keySchema) , AdminKey :  mongoose.model('AdminKey',keySchema) };
