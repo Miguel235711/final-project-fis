@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const router = express.Router();///router
 const Admin = require('../models/users/admin/admin');
 const Student = require('../models/users/student/student');
-const Key = require('../models/special/key');
+const keys = require('../models/special/key');
 
 function saveStudent(body,res,hash){
   console.log('saveStudent');
@@ -54,40 +54,55 @@ function saveAdmin(body,res,hash){
     });
   });
 }
+
+function keyNotFound(user,res){
+  return res.status(401).json({message:`Llave de ${user} no encontrada`});
+}
+
+function keySearchFail(user,res){
+  return res.status(500).json({message:`Error en búsqueda de llave de ${user}` });
+}
+
 router.post('/signup',(req,res,next)=>{
   console.log(req.body.key);
-  Key.find({})
-  .then(keys=>{
-    if(!keys){
-      console.log('no keys in this search...');
-    }
-    keys.forEach(key=>{
-      console.log(key);
-    });
-  });
-  Key.findOne({key:req.body.key})
-  .then(result=>{
-    console.log(result);
-    if(!result){
-      return res.status(401).json({message:'¡Llave no encontrada!'});
-    }
-    //sendMail();
-    ///test if mail exists
-    ///erase key
-    Key.deleteOne({key:req.body.key}).then(result=>{
-      console.log('after deleting key');
-    });
-    bcrypt.hash(req.body.password, 10)
-    .then(hash =>{
-      if(req.body.isAdmin){
-        ///save as admin
-        return saveAdmin(req.body,res,hash);
-      }else{
-        //save as student
-        return saveStudent(req.body,res,hash);
-      }
-    });
-  });
+  console.log('keys',keys);
+  if(!req.body.isAdmin){
+    ///sign up student
+    keys.StudentKey.deleteOne({key:req.body.key})
+      .then(result=>{
+        if(result.n>0){
+          ///deletion successful
+          bcrypt.hash(req.body.password, 10)
+            .then(hash =>{
+              return saveStudent(req.body,res,hash);
+          });
+        }else{
+          ///key not found
+          return keyNotFound('Estudiante',res);
+        }
+      })
+      .catch(error=>{
+        return keySearchFail('Estudiante',res);
+      });
+  } else {
+    ///sign up admin
+    keys.AdminKey.deleteOne({key:req.body.key})
+      .then(result=>{
+        if(result.n>0){
+          ///deletion successful
+          bcrypt.hash(req.body.password, 10)
+            .then(hash =>{
+              return saveAdmin(req.body,res,hash);
+          });
+        }else{
+          ///key not found
+          return keyNotFound('Estudiante',res);
+        }
+      })
+      .catch(error=>{
+        return keySearchFail('Estudiante',res);
+      });
+  }
 });
 
 function processUser(fetchedUser,req,res){
