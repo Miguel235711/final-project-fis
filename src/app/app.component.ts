@@ -17,10 +17,11 @@ export class AppComponent implements OnInit , OnDestroy {
     this.authService.autoAuthUser();
     this.authenticated = this.authService.getIsAuth();
     console.log('this.authenticated', this.authenticated);
-    if (this.authenticated && this.router.url[0] === '/') {
-      this.router.navigate(['/NewsFeed']);
-    } else if (!this.authenticated) {
+    console.log('current router', window.location.href);
+    if (!this.authenticated) {
       this.router.navigate(['/']);
+    } else if (window.location.href === 'http://localhost:4200/') {
+      this.router.navigate(['/NewsFeed']);
     }
     this.userAuthSubs = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
       if (!isAuthenticated) {
