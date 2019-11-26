@@ -50,7 +50,7 @@ function saveAdmin(body,res,hash){
   })
   .catch(err=>{
     return res.status(500).json({
-    message: "¡Registro de Estudiante Falló!"
+    message: "¡Registro de Administrador Falló!"
     });
   });
 }
