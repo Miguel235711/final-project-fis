@@ -14,6 +14,7 @@ const itemSchema = mongoose.Schema({///Constructor
   PrepaProfe: {type:String, required:true, enum: ['Prepa','Profe']},
   Editar: {type:Boolean, required:true},
   Borrar: {type:Boolean, required:true},
+  Restaurar: {type:Boolean, required:true},
   Activo: {type: Boolean, required:true}
 });///create schema
 

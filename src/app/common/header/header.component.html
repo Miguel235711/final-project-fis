@@ -8,10 +8,17 @@
         <a mat-button routerLink="/Practices" routerLinkActive="mat-accent" >Prácticas</a>
       </li>
       <li>
-          <a *ngIf="isAdmin" mat-button routerLink ="/Inventory" routerLinkActive="mat-accent" [matMenuTriggerFor]="menu">Inventario</a>
+          <a *ngIf="isAdmin" mat-button [matMenuTriggerFor]="menu">Inventario</a>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item routerLink="/Search">Buscar</button>
-            <button mat-menu-item routerLink="/Check">Consultar</button>
+            <div>
+              <button mat-button routerLinkActive = "mat-accent" routerLink="/Search">Buscar</button>
+            </div>
+            <div>
+              <button  mat-button routerLinkActive = "mat-accent" routerLink="/Check">Consultar</button>
+            </div>
+            <div>
+              <button mat-button routerLinkActive = "mat-accent" routerLink="/Recovery">Papelera</button>
+            </div>
           </mat-menu>
       </li>
       <li>

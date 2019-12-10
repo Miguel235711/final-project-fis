@@ -22,6 +22,7 @@ router.post('/addItem',checkAuth,(req,res,next)=>{
     PrepaProfe: req.body.PrepaProfe,
     Editar: req.body.Editar,
     Borrar: req.body.Borrar,
+    Restaurar: req.body.Restaurar,
     Activo:true
   });
   console.log(item);
@@ -89,18 +90,37 @@ router.get('',checkAuth,(req,res,next)=>{
           message:'Fetching Items failed'
         });
       });
-    }else{
-      res.status(500).json({message:'query retrieving items failed'});
-    }
+  }else if(req.query.type==='unsubscribed'){
+    ///filter by unsubscribed
+    Item.find({Activo:false})
+      .then(fetchedItems=>{
+        res.status(200).json({
+          message: 'Unsubscribed Items fetched successfully',
+          items: fetchedItems
+        })
+      })
+      .catch(error=>{
+        res.status(500).json({
+          message:'Unsubscribed Items Fetching Failed'
+        });
+      });
+  }else{
+    res.status(500).json({message:'query retrieving items failed'});
+  }
 });
 router.put('',checkAuth,(req,res,next)=>{
   console.log('req.query.id ' ,req.query.id);
   console.log('item',req.body);
   console.log('put serverside: ',req.body);
-  Item.updateOne({_id: req.query.id},req.body)
+  let updateParameter = req.body, message = 'Item editado exitosamente';
+  if(Object.entries(req.body).length === 0 && req.body.constructor === Object) {
+    updateParameter = {Activo:true}; ///tricky
+    message='Item restaurado exitosamente';
+  }
+  Item.updateOne({_id: req.query.id},updateParameter)
     .then(response=>{
       console.log('update',response);
-      res.status(201).json({message:'Item editado exitosamente'});
+      res.status(201).json({message});
     })
     .catch(error=>{
       console.log('error in put of item: ', error);

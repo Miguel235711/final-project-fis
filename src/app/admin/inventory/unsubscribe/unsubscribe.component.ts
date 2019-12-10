@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {ItemService } from '../item-data.service';
 import { AuthService } from 'src/app/common/auth/auth-data.service';
+import { TableElement } from '../tableElement-data.model';
 
 @Component({
   selector: 'app-unsubscribe',
@@ -11,7 +12,7 @@ import { AuthService } from 'src/app/common/auth/auth-data.service';
 export class UnsubscribeComponent implements OnInit {
   genreFinish = 'a';
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: {etiqueta: string, id: string, urlType: string},
+    @Inject(MAT_DIALOG_DATA) public data: {title: string, description: string, etiqueta: string, id: string, urlType: string},
     public itemService: ItemService,
     public authService: AuthService
     ,
@@ -19,14 +20,17 @@ export class UnsubscribeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    if (this.authService.getGenre() === 'Hombre') {
-      this.genreFinish = 'o';
-    }
-    console.log('genre', this.authService.getGenre());
   }
   onUnsubscribe() {
     console.log('onUnsubscribe this.data', this.data);
-    this.itemService.unsubscribeItem(this.data.etiqueta, this.data.id, this.data.urlType);
+    if (this.data.urlType === 'Search' || this.data.urlType === 'Check') {
+      this.itemService.unsubscribeItem(this.data.etiqueta, this.data.id, this.data.urlType);
+    } else if (this.data.urlType === 'Recovery') {
+      /// recover
+      this.itemService.recoverItem(this.data.id);
+    } else {
+      console.log('Error in unsubscribe component, urltype is not valid -> ', this.data.urlType );
+    }
     this.dialogRef.close();
   }
 }

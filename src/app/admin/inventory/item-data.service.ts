@@ -103,7 +103,7 @@ export class ItemService {
           }
         }
       }, error => {
-        console.log('error in updatePost()');
+        console.log('error in updateItem()');
       });
   }
   unsubscribeItem(color: string, id: string, urlType: string ) {
@@ -120,6 +120,27 @@ export class ItemService {
         }
       }, error => {
         console.log('error in unsubscribeItem');
+      });
+  }
+  getUnsubscribedItems() {
+    const queryParams = '?type=unsubscribed';
+    this.http
+    .get<{message: string, items: TableElement[]}>('http://localhost:3000/api/item' + queryParams).subscribe(response => {
+      this.tables = response.items;
+      console.log('update subject');
+      this.filterSubject.next({tables: [...this.tables]});
+    }, error => {
+      console.log('error getItemsFilterd()', error);
+    });
+  }
+  recoverItem(id: string) {
+    this.http
+      .put('http://localhost:3000/api/item/?id=' + id, undefined)
+      .subscribe(response => {
+        console.log(response);
+        this.getUnsubscribedItems();
+      }, error => {
+        console.log('error in recoverItem()');
       });
   }
 }

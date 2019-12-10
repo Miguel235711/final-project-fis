@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import {CreateComponent } from '../create/create.component';
 import {UnsubscribeComponent} from '../unsubscribe/unsubscribe.component';
 import {MatDialog} from '@angular/material';
+import { AuthService } from 'src/app/common/auth/auth-data.service';
 
 @Injectable({providedIn: 'root'})
 export class CreateService {
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, public authService: AuthService) {}
   onCreate(clickedElement, Etiqueta: string, id: string, urlType: string) {
     console.log('id:' , id);
     const name = clickedElement._elementRef.nativeElement.name;
@@ -22,6 +23,24 @@ export class CreateService {
   onDelete(etiqueta: string , id: string, urlType: string) {
     console.log('onDelete color', etiqueta);
     console.log('onDelete id', id);
-    this.dialog.open(UnsubscribeComponent, {data: {etiqueta, id, urlType} });
+    this.dialog.open(UnsubscribeComponent, {
+      data: {
+        title: 'Baja de ITEM' ,
+        description: `¿Estás segur${this.authService.getGenreEnding()} de remover el item?`,
+        etiqueta,
+        id,
+        urlType
+      }}
+    );
+  }
+  onRecover(id: string) {
+    this.dialog.open(UnsubscribeComponent, {
+      data: {
+        title: 'Restauración de ITEM',
+        description: `¿Estás segur${this.authService.getGenreEnding()} de remover el item?`,
+        id,
+        urlType: 'Recovery'
+      }}
+    );
   }
 }

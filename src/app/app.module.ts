@@ -31,7 +31,6 @@ import { ForgotComponent } from './common/auth/forgot/forgot.component';
 import { SignupComponent } from './common/auth/signup/signup.component';
 import { NewsfeedComponent } from './common/newsfeed/newsfeed.component';
 import { PracticesComponent } from './admin/practices/practices.component';
-import { ExcelComponent } from './admin/inventory/excel/excel.component';
 import { MygroupsComponent } from './admin/mygroups/mygroups.component';
 import { SearchComponent } from './admin/inventory/search/search.component';
 import { CheckComponent } from './admin/inventory/check/check.component';
@@ -43,6 +42,8 @@ import { TableComponent } from './admin/inventory/check/table/table.component';
 import { AuthInterceptor } from './common/auth/auth-interceptor';
 import { UnsubscribeComponent } from './admin/inventory/unsubscribe/unsubscribe.component';
 import { AuthGuard } from './common/auth/auth.guard';
+import { RecoveryComponent } from './admin/inventory/recovery/recovery.component';
+import { RecoveryTableComponent } from './admin/inventory/recovery/recovery-table/recovery-table.component';
 
 @NgModule({
   declarations: [
@@ -53,14 +54,15 @@ import { AuthGuard } from './common/auth/auth.guard';
     SignupComponent,
     NewsfeedComponent,
     PracticesComponent,
-    ExcelComponent,
     MygroupsComponent,
     SearchComponent,
     CheckComponent,
     ErrorComponent,
     CreateComponent,
     TableComponent,
-    UnsubscribeComponent
+    UnsubscribeComponent,
+    RecoveryComponent,
+    RecoveryTableComponent
   ],
   imports: [
     BrowserModule,
