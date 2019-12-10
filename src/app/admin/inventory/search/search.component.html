@@ -10,6 +10,7 @@
           </mat-form-field>
           <mat-select required [(ngModel)] = "color" #colorInput ="ngModel"  [ngStyle]="{'background-color':color}">
             <mat-option *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.viewValue}">
+              {{color.categoryMeaning}}
             </mat-option>
           </mat-select>
           <button mat-button (click)="onSearch()">

@@ -77,7 +77,7 @@
             </td>
             <td>
               <mat-select required [(ngModel)] = "createForm.Etiqueta" #colorInput ="ngModel"  [ngStyle]="{'background-color':createForm.Etiqueta}">
-                <mat-option *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.viewValue}">
+                <mat-option *ngFor="let color of colors" [value]="color.value" [ngStyle]="{'background-color':color.viewValue}"> {{color.categoryMeaning}}
                 </mat-option>
               </mat-select>
               <mat-error *ngIf="colorInput.invalid">¡Escoge Color!</mat-error>

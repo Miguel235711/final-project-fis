@@ -20,14 +20,14 @@ export class SearchComponent implements OnInit {
   keyword: string;
   color: string;
   colors: ColorElement[] = [
-    {value: 'yellow', viewValue: 'yellow'},
-    {value: 'green', viewValue: 'green'},
-    {value: 'cyan', viewValue: 'cyan'},
-    {value: 'pink', viewValue: 'pink'},
-    {value: 'blue', viewValue: 'blue'},
-    {value: 'orange', viewValue: 'orange'},
-    {value: 'gray', viewValue: 'gray'},
-    {value: 'white', viewValue: 'white'}
+    {value: 'yellow', viewValue: 'yellow', categoryMeaning: 'Volátiles'},
+    {value: 'green', viewValue: 'green', categoryMeaning: 'Sales'},
+    {value: 'cyan', viewValue: 'cyan', categoryMeaning: 'Ácidos'},
+    {value: 'pink', viewValue: 'pink', categoryMeaning: 'Otros Reactivos'},
+    {value: 'blue', viewValue: 'blue', categoryMeaning: 'Vidrio'},
+    {value: 'orange', viewValue: 'orange', categoryMeaning: 'Otros Materiales'},
+    {value: 'gray', viewValue: 'gray', categoryMeaning: 'Mobiliario'},
+    {value: 'white', viewValue: 'white', categoryMeaning: 'Todas'}
   ];
   ngOnInit() {
     const filterElement: Filter = {

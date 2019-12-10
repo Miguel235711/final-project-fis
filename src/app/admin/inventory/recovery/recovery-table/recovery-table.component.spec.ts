@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExcelComponent } from './excel.component';
+import { RecoveryTableComponent } from './recovery-table.component';
 
-describe('InventoryComponent', () => {
-  let component: ExcelComponent;
-  let fixture: ComponentFixture<ExcelComponent>;
+describe('RecoveryTableComponent', () => {
+  let component: RecoveryTableComponent;
+  let fixture: ComponentFixture<RecoveryTableComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExcelComponent ]
+      declarations: [ RecoveryTableComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExcelComponent);
+    fixture = TestBed.createComponent(RecoveryTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

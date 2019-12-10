@@ -112,6 +112,9 @@ export class AuthService {
       this.userInfoListener.next({userName: authInformation.userName, userType: authInformation.userType});
     }
   }
+  getGenreEnding(){
+    return this.userGenre === 'Hombre' ?  'o' : (this.userGenre === 'Mujer' ?  'a' : '@');
+  }
   logout() {
     this.token = null;
     this.userId = null;
