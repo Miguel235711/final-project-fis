@@ -19,7 +19,9 @@ import {
   MatTableModule,
   MatIconModule,
   MatGridListModule,
-  MatProgressBarModule
+  MatProgressBarModule,
+  MatSortModule,
+  MatNativeDateModule
 } from '@angular/material';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -87,7 +89,10 @@ import { RecoveryComponent } from './admin/inventory/recovery/recovery.component
     MatIconModule,
     MatGridListModule,
     FlexLayoutModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatSortModule,
+    MatNativeDateModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
