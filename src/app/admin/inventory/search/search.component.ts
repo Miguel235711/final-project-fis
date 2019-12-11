@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ItemService } from '../item-data.service';
 import { Subscription } from 'rxjs';
 import {Filter } from './filter.model';
@@ -17,6 +17,8 @@ export class SearchComponent implements OnInit {
   reactives = ['Volátiles', 'Sales', 'Ácidos', 'Otros'];
   materials = ['Vidrio', 'Otros'];
   furnitures = ['Mobiliario'];
+  @Input() title = 'Buscar elemento';
+  @Input() urlType = 'Search';
   keyword: string;
   color: string;
   colors: ColorElement[] = [
@@ -32,16 +34,19 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     const filterElement: Filter = {
       keyword: '',
-      color: ''
+      color: '',
+      Activo: this.urlType !== 'Unsubscribe'
     };
     this.itemService.getItemsFiltered(filterElement);
+    console.log('urlType in search component: ', this.urlType);
   }
   onSearch() {
     console.log('keyword', this.keyword);
     console.log('reactivo', this.color);
     const filterElement: Filter = {
       keyword: this.keyword,
-      color: this.color
+      color: this.color,
+      Activo: this.urlType !== 'Unsubscribe'
     };
     this.itemService.getItemsFiltered(filterElement);
   }

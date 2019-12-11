@@ -18,7 +18,8 @@ import {
   MatOptionModule,
   MatTableModule,
   MatIconModule,
-  MatGridListModule
+  MatGridListModule,
+  MatProgressBarModule
 } from '@angular/material';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -43,7 +44,6 @@ import { AuthInterceptor } from './common/auth/auth-interceptor';
 import { UnsubscribeComponent } from './admin/inventory/unsubscribe/unsubscribe.component';
 import { AuthGuard } from './common/auth/auth.guard';
 import { RecoveryComponent } from './admin/inventory/recovery/recovery.component';
-import { RecoveryTableComponent } from './admin/inventory/recovery/recovery-table/recovery-table.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +62,6 @@ import { RecoveryTableComponent } from './admin/inventory/recovery/recovery-tabl
     TableComponent,
     UnsubscribeComponent,
     RecoveryComponent,
-    RecoveryTableComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +86,8 @@ import { RecoveryTableComponent } from './admin/inventory/recovery/recovery-tabl
     MatTableModule,
     MatIconModule,
     MatGridListModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatProgressBarModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},

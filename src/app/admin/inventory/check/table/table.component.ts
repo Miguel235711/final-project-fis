@@ -10,26 +10,40 @@ import {Subscription } from 'rxjs';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit {
-  displayedColumns: string[] = ['Unidades', 'Cantidad', 'Nombre', 'Etiqueta' , 'NumBodega', 'NumLab', 'Observaciones', 'PrepaProfe',
-  'Editar', 'Borrar'];
+  displayedColumns: string[] = ['Unidades', 'Cantidad', 'Nombre', 'Etiqueta' , 'NumBodega', 'NumLab', 'Observaciones', 'PrepaProfe'];
   ELEMENT_DATA: TableElement[];
   @Input() color: string;
   @Input() urlType: string;
   itemServiceSubs: Subscription;
   itemFilterServiceSubs: Subscription;
+  isLoading = true ;
   constructor(public createService: CreateService, public itemService: ItemService) { }
   ngOnInit() {
-    console.log('table color: ', this.color);
-    if (this.color !== undefined) {
-      this.itemService.getItems(this.color);
+    this.isLoading = false ;
+    if (this.urlType !== 'Unsubscribe') {
+      this.displayedColumns.push('Editar');
+      this.displayedColumns.push('Borrar');
+    } else if (this.urlType === 'Unsubscribe') {
+      this.displayedColumns.push('Restaurar');
     }
-    this.itemServiceSubs = this.itemService.getItemUpdateListener(this.color).subscribe((tableData: {tables: TableElement[]} ) => {
-      console.log('ngOnInit of table', tableData.tables);
-      this.ELEMENT_DATA = tableData.tables;
-    });
-    this.itemFilterServiceSubs = this.itemService.getItemFilterUpdateListener().subscribe((tableData: {tables: TableElement[]}) => {
-      this.ELEMENT_DATA = tableData.tables;
-    });
+    if (this.urlType === 'Unsubscribe') {
+      this.itemService.getUnsubscribedItems();
+      this.itemFilterServiceSubs = this.itemService.getItemFilterUpdateListener().subscribe((tableData: {tables: TableElement[]}) => {
+        this.ELEMENT_DATA = tableData.tables;
+      });
+    } else {
+      console.log('table color: ', this.color);
+      if (this.color !== undefined) {
+        this.itemService.getItems(this.color);
+      }
+      this.itemServiceSubs = this.itemService.getItemUpdateListener(this.color).subscribe((tableData: {tables: TableElement[]} ) => {
+        console.log('ngOnInit of table', tableData.tables);
+        this.ELEMENT_DATA = tableData.tables;
+      });
+      this.itemFilterServiceSubs = this.itemService.getItemFilterUpdateListener().subscribe((tableData: {tables: TableElement[]}) => {
+        this.ELEMENT_DATA = tableData.tables;
+      });
+    }
   }
 }
 

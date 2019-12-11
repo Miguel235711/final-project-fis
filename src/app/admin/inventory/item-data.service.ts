@@ -16,7 +16,8 @@ export class ItemService {
   constructor(private http: HttpClient, private router: Router) {}
   filterDefaultElement: Filter = {
     keyword: undefined,
-    color: undefined
+    color: undefined,
+    Activo: undefined
   };
   private createSubjectIfNecessary(color: string) {
     if (!this.subjects[color]) {
@@ -68,7 +69,7 @@ export class ItemService {
     console.log('this.filterDefaultElement', this.filterDefaultElement);
     const type = 'filter';
     const queryParams =
-    `?type=${type}&keyword=${filterElement.keyword}&color=${filterElement.color}`;
+    `?type=${type}&keyword=${filterElement.keyword}&color=${filterElement.color}&activo=${filterElement.Activo}`;
     console.log('query', queryParams);
     this.http
     .get<{message: string, items: TableElement[]}>('http://localhost:3000/api/item' + queryParams).subscribe(response => {
