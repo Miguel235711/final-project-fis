@@ -1,3 +1,4 @@
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
 <div class="example-container mat-elevation-z8">
     <table mat-table [dataSource]="ELEMENT_DATA">
 
@@ -49,17 +50,21 @@
         <td mat-cell *matCellDef="let element"> {{element.PrepaProfe}} </td>
       </ng-container>
       <!-- Editar Column-->
-      <ng-container matColumnDef="Editar">
-          <th mat-header-cell *matHeaderCellDef> Editar </th>
+      <ng-container *ngIf= "urlType!=='Unsubscribe'" matColumnDef="Editar">
+          <th mat-header-cell  *matHeaderCellDef> Editar </th>
           <td mat-cell *matCellDef="let element"> <button *ngIf="element.Editar" mat-button #editButton (click)="createService.onCreate(editButton,color,element._id,urlType)" name="editButton"><img src="https://img.icons8.com/material-rounded/24/000000/edit.png"></button> </td>
       </ng-container>
 
       <!-- delete icon -->
-      <ng-container matColumnDef="Borrar">
-          <th mat-header-cell *matHeaderCellDef> Borrar </th>
-          <td mat-cell *matCellDef="let element"> <button *ngIf="element.Borrar" mat-button #eraseButton (click) ="createService.onDelete(color,element._id,urlType)" > <img src="https://img.icons8.com/ios-glyphs/30/000000/filled-trash.png"> </button>   </td>
-        </ng-container>
-
+      <ng-container *ngIf= "urlType!=='Unsubscribe'" matColumnDef="Borrar">
+        <th mat-header-cell *matHeaderCellDef > Borrar </th>
+        <td mat-cell *matCellDef="let element"> <button *ngIf="element.Borrar" mat-button #eraseButton (click) ="createService.onDelete(color,element._id,urlType)" > <img src="https://img.icons8.com/ios-glyphs/30/000000/filled-trash.png"> </button>   </td>
+      </ng-container>
+      <!-- recover Column-->
+      <ng-container matColumnDef="Restaurar">
+        <th mat-header-cell *matHeaderCellDef> Restaurar </th>
+        <td mat-cell *matCellDef="let element"> <button *ngIf="element.Restaurar" mat-button #recoverButton name='recoverButton' (click)="this.createService.onRecover(element._id)"> <img src="https://img.icons8.com/ios/50/000000/settings-backup-restore.png"> </button> </td>
+      </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>

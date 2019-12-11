@@ -37,7 +37,7 @@ export class CreateService {
     this.dialog.open(UnsubscribeComponent, {
       data: {
         title: 'Restauración de ITEM',
-        description: `¿Estás segur${this.authService.getGenreEnding()} de remover el item?`,
+        description: `¿Estás segur${this.authService.getGenreEnding()} de restaurar el item?`,
         id,
         urlType: 'Recovery'
       }}
