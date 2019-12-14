@@ -15,7 +15,8 @@ mat-action-row{
   margin-right: auto;
 }
 mat-accordion,mat-expansion-panel{
-  background-color: lightblue;
+  background-color: lightskyblue;
+  color: white;
   font-size:12px;
   font-family: 'Times New Roman', Times, serif;
   position: static;
@@ -23,4 +24,7 @@ mat-accordion,mat-expansion-panel{
   position: fixed;
   right:25px;
   height: auto;
+}
+mat-panel-title,mat-panel-content,#logout{
+  color:white;
 }

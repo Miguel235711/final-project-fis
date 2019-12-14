@@ -71,7 +71,7 @@ export class CreateComponent implements OnInit {
     } else if (this.data.type === 'edit') {
       console.log('edit onSave()');
       this.itemService.updateItem(this.createForm, this.originalColor, this.data.urlType);
-      this.dialogRef.close();
     }
+    this.dialogRef.close();
   }
 }
