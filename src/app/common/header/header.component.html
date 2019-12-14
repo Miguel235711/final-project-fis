@@ -8,7 +8,7 @@
         <a mat-button routerLink="/Practices" routerLinkActive="mat-accent" >Prácticas</a>
       </li>
       <li>
-          <a *ngIf="isAdmin" mat-button [matMenuTriggerFor]="menu">Inventario</a>
+          <a *ngIf="isAdmin"  mat-button [matMenuTriggerFor]="menu">Inventario</a>
           <mat-menu #menu="matMenu">
             <div>
               <button mat-button routerLinkActive = "mat-accent" routerLink="/Search">Buscar</button>
@@ -20,9 +20,9 @@
               <button mat-button routerLinkActive = "mat-accent" routerLink="/Recovery">Papelera</button>
             </div>
           </mat-menu>
-      </li>
+      </li >
       <li>
-          <a id="logout" mat-button routerLink ="/MyGroups" routerLinkActive="mat-accent">Mis Grupos</a>
+          <a mat-button routerLink ="/MyGroups" routerLinkActive="mat-accent">Mis Grupos</a>
       </li>
       <li>
         <div id="logMenu">
@@ -37,7 +37,7 @@
                 </mat-card-content>
               </mat-expansion-panel-header>
               <mat-action-row>
-                <a mat-button routerLink ="/" routerLinkActive="mat-accent" (click)="onLogout()">Logout</a>
+                <a id="logout" mat-button routerLink ="/" routerLinkActive="mat-accent" (click)="onLogout()">Logout</a>
               </mat-action-row>
             </mat-expansion-panel>
           </mat-accordion>
