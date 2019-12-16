@@ -46,6 +46,7 @@ import { AuthInterceptor } from './common/auth/auth-interceptor';
 import { UnsubscribeComponent } from './admin/inventory/unsubscribe/unsubscribe.component';
 import { AuthGuard } from './common/auth/auth.guard';
 import { RecoveryComponent } from './admin/inventory/recovery/recovery.component';
+import { ImageContextPlaceholderComponent } from './common/image-context-placeholder/image-context-placeholder.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { RecoveryComponent } from './admin/inventory/recovery/recovery.component
     TableComponent,
     UnsubscribeComponent,
     RecoveryComponent,
+    ImageContextPlaceholderComponent,
   ],
   imports: [
     BrowserModule,
