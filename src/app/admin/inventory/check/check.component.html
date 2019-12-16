@@ -1,119 +1,120 @@
-<h1>Consultar inventario</h1>
-<div class="square"> </div>
-<mat-accordion>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Reactivos
-      </mat-panel-title>
-      <mat-panel-description>
-        Sustancias del laboratorio, quimicos...
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-        <mat-accordion>
+  <h1>Consultar inventario</h1>
+  <app-search urlType='Search' title='' initialCriteria = 'none'></app-search>
+  <div   class="square"> </div >
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Reactivos
+        </mat-panel-title>
+        <mat-panel-description>
+          Sustancias del laboratorio, quimicos...
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+          <mat-accordion>
 
-          <mat-expansion-panel style="background-color:yellow;">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                1.A Volátiles
-              </mat-panel-title>
-              <mat-panel-description>
-                Materiales sensibles al ambiente
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            <app-table color="yellow" urlType="Check"></app-table>
-          </mat-expansion-panel>
-
-          <mat-expansion-panel style="background-color:green;">
+            <mat-expansion-panel style="background-color:yellow;">
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                 1.B Sales
+                  1.A Volátiles
                 </mat-panel-title>
                 <mat-panel-description>
-                  Sales binarias, ternarias...
+                  Materiales sensibles al ambiente
                 </mat-panel-description>
               </mat-expansion-panel-header>
-              <app-table color = "green" urlType="Check"></app-table>
-              <!--> Here goes the chart <!-->
-          </mat-expansion-panel>
+              <app-table color="yellow" urlType="Check"></app-table>
+            </mat-expansion-panel>
 
-            <mat-expansion-panel style="background-color:cyan;">
+            <mat-expansion-panel style="background-color:green;">
                 <mat-expansion-panel-header>
                   <mat-panel-title>
-                    1.C Ácidos
+                  1.B Sales
                   </mat-panel-title>
                   <mat-panel-description>
-                    Acidos minerales, sulfónicos, carboxílicos...
+                    Sales binarias, ternarias...
                   </mat-panel-description>
                 </mat-expansion-panel-header>
-                <app-table color = "cyan" urlType="Check"></app-table>
-                <!-->Here goes the chart<!-->
+                <app-table color = "green" urlType="Check"></app-table>
+                <!--> Here goes the chart <!-->
             </mat-expansion-panel>
-            <mat-expansion-panel style="background-color:pink;">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                 1.D Otros
-                </mat-panel-title>
-                <mat-panel-description>
-                  Otros reactivos
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <app-table color = "pink" urlType="Check"></app-table>
-              <!--> Here goes the chart <!-->
-          </mat-expansion-panel>
-        </mat-accordion>
 
+              <mat-expansion-panel style="background-color:cyan;">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      1.C Ácidos
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      Acidos minerales, sulfónicos, carboxílicos...
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <app-table color = "cyan" urlType="Check"></app-table>
+                  <!-->Here goes the chart<!-->
+              </mat-expansion-panel>
+              <mat-expansion-panel style="background-color:pink;">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                  1.D Otros
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    Otros reactivos
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <app-table color = "pink" urlType="Check"></app-table>
+                <!--> Here goes the chart <!-->
+            </mat-expansion-panel>
+          </mat-accordion>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Materiales
+        </mat-panel-title>
+        <mat-panel-description>
+          Equipo tecnológico del laboratorio
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-accordion>
+
+        <mat-expansion-panel style= "background-color:blue;">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              2.A Vidrio
+            </mat-panel-title>
+            <mat-panel-description>
+              Materiales de vidrio
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <app-table color = "blue" urlType="Check"></app-table>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel style="background-color:orange;">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+              2.B Otros
+              </mat-panel-title>
+              <mat-panel-description>
+                Otros...
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <app-table color = "orange" urlType="Check"></app-table>
+            <!--> Here goes the chart <!-->
+          </mat-expansion-panel>
+      </mat-accordion>
   </mat-expansion-panel>
 
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
-        Materiales
+        Mobiliario
       </mat-panel-title>
       <mat-panel-description>
-        Equipo tecnológico del laboratorio
+        Sillas, mesas...
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <mat-accordion>
+    <app-table color = "gray" urlType="Check"></app-table>
+    <!--> Here goes the chart <!-->
 
-      <mat-expansion-panel style= "background-color:blue;">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            2.A Vidrio
-          </mat-panel-title>
-          <mat-panel-description>
-            Materiales de vidrio
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <app-table color = "blue" urlType="Check"></app-table>
-      </mat-expansion-panel>
-
-      <mat-expansion-panel style="background-color:orange;">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-             2.B Otros
-            </mat-panel-title>
-            <mat-panel-description>
-              Otros...
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <app-table color = "orange" urlType="Check"></app-table>
-          <!--> Here goes the chart <!-->
-        </mat-expansion-panel>
-    </mat-accordion>
- </mat-expansion-panel>
-
- <mat-expansion-panel>
-  <mat-expansion-panel-header>
-    <mat-panel-title>
-      Mobiliario
-    </mat-panel-title>
-    <mat-panel-description>
-      Sillas, mesas...
-    </mat-panel-description>
-  </mat-expansion-panel-header>
-  <app-table color = "gray" urlType="Check"></app-table>
-   <!--> Here goes the chart <!-->
-
-</mat-expansion-panel>
+  </mat-expansion-panel>
 </mat-accordion>

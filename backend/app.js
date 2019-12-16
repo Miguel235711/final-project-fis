@@ -13,7 +13,7 @@ const app = express();///get express app
 
 ///CONNECT TO DATABASE
 
-mongoose.connect('mongodb://localhost:27017/fis-project', {useNewUrlParser: true,useUnifiedTopology:true})
+mongoose.connect('mongodb+srv://nodeapp:K4bGfwIYKzkBaiP7@cluster0-vi42a.mongodb.net/app', {useNewUrlParser: true,useUnifiedTopology:true})
 .then(()=>{
   console.log('Connected to database');
 })

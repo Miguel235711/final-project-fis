@@ -14,7 +14,9 @@ img{
   width: 100%;
   height: auto;
 }
-
 .contenedora{
   margin-bottom: 50px;
+}
+#container{
+  background-color:#FFC107;
 }
