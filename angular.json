@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "final-project-fis"
+  "defaultProject": "final-project-fis",
+  "cli": {
+    "analytics": false
+  }
 }
