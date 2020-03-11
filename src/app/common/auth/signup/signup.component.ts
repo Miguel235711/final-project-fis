@@ -4,7 +4,7 @@ import { AuthService } from '../auth-data.service';
 import { AuthData } from '../auth-data.model';
 import { Subscription } from 'rxjs';
 import { ErrorComponent  } from '../../error/error.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-signup',

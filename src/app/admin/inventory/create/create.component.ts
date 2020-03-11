@@ -1,9 +1,9 @@
 import { Component, OnInit, Inject, Input} from '@angular/core';
 import { ColorElement } from '../color-data.model';
 import { TableElement } from '../tableElement-data.model';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {ItemService } from '../item-data.service';
-import {MatDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material/dialog';
 import {UnsubscribeComponent} from '../unsubscribe/unsubscribe.component';
 @Component({
   templateUrl: './create.component.html',
