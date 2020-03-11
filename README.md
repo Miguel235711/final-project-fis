@@ -4,11 +4,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.19.
 
-##Instalations
+## Instalations
 
  Install node.js and angular CLI globally in your corresponding operating system. Use Visual Studio Code installing "Angular Snippets" and "Material Icon Theme" for better experience.
  
-##Installing node_modules in local project
+## Installing node_modules in local project
 
  Issue the command `npm update` in the project directory to install the node_modules on which the project depends on.
 
