@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {CreateComponent } from '../create/create.component';
 import {UnsubscribeComponent} from '../unsubscribe/unsubscribe.component';
-import {MatDialog} from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/common/auth/auth-data.service';
 
 @Injectable({providedIn: 'root'})

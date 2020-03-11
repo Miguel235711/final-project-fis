@@ -2,7 +2,7 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpErrorResponse } from '@a
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import {MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { ErrorComponent } from './common/error/error.component';
 import { AuthService } from './common/auth/auth-data.service';
 import {Router } from '@angular/router';

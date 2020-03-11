@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import {ItemService } from '../item-data.service';
 import { AuthService } from 'src/app/common/auth/auth-data.service';
 import { TableElement } from '../tableElement-data.model';
