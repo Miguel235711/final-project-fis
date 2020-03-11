@@ -14,7 +14,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Project Structure
 
- The Angular (front-end) module is located inside the folder `src` and the Node (backend) module is located inside the folder `backend'.
+ The Angular (front-end) module is located inside the folder `src` and the Node (backend) module is located inside the folder `backend`.
 
 ## Development server
 
