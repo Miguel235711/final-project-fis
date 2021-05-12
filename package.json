@@ -31,7 +31,7 @@
     "mongodb": "^3.4.0",
     "mongoose": "^5.8.0",
     "mongoose-unique-validator": "^2.0.3",
-    "nodemailer": "^6.4.5",
+    "nodemailer": "^6.4.16",
     "passport-google-plus-token": "^2.1.0",
     "rxjs": "~6.5.4",
     "serialize-javascript": "^2.1.2",
