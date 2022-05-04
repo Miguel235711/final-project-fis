@@ -23,7 +23,7 @@
     "@angular/platform-browser": "~9.0.6",
     "@angular/platform-browser-dynamic": "~9.0.6",
     "@angular/router": "~9.0.6",
-    "angular": "^1.7.9",
+    "angular": "^1.8.3",
     "angular-material": "^1.1.20",
     "bcrypt": "^3.0.6",
     "googleapis": "^39.2.0",
